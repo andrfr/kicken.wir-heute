@@ -1,11 +1,18 @@
+Dates = new Mongo.Collection('dates');
+Players = new Mongo.Collection('players');
+
+
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
+  Template.body.helpers({
+    answer: function(){
+    // überprüfen ob der Tag dem nächsten Termin entspricht und ob genug Spieler angemeldet sind
+      return 'Ja';
     }
+
+    // Wenn richtiger Tag und genug Spieler: Antwort "Ja"; falls nicht Zeit bis zum nächsten Termin anzeigen und Möglichkeit zum Anmelden
   });
 
   Template.hello.events({

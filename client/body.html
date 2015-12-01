@@ -2,23 +2,54 @@
 
 <body>
     <div id="date">
-        <h1>Kicken wir heute?</h1>
-        <p>Nein, es haben sich zu wenig angemeldet</p>
+        <h1>Kicken wir {{currentDate.dateInfo}}?</h1>
+        <p>{{datestate}}</p>
         <div id="date-info">
         	<p>Bis jetzt nur:</p>
         	<ul id="subscriber">
-        		<li>Matze</li>
-        		<li>Horst</li>
-        		<li>Thorsten</li>
-        		<li>Jens</li>
+            {{#each subscribers}} <li>{{email}}</li> {{/each}}
         	</ul>
-        	<p>Du bist noch nicht angemeldet</p>
-        	<button>Jetz anmelden</button>
+            <p>Bist du dabei?</p>
+            <form class="subscribeToDate">
+                <input type="text" name="subscriberEmail" class="subscriberEmail" placeholder="email" />
+                <button class="subscribe">Ich kicke mit!</button>
+                <button class="unsubscribe">Ohne mich!</button>
+            </form>
+        	
         </div>
     </div>
-
+<hr />
     <div id="meta">
-    	<p>Hallo Dumpfbacke</p>
-    	<p>Dein Kontostand: 3€</p>
+    	<p>Hallo {{username}}</p>
+    	<p>Dein Kontostand: {{userbalance}}</p>
+        <p>Alle Termine: </p>
+        <ul>
+        {{#each dates}}
+            {{> date}}
+        {{/each}}
+        </ul>
+        <p>Termin erstellen</p>
+        <form class="createDate">
+          <input type="text" name="date" placeholder="date" />
+        </form>
+        <p>Alle User: </p>
+        <ul>
+        {{#each users}}
+            {{> user}}
+            
+        {{/each}}
+        </ul>
+        <p>User erstellen</p>
+        <form class="createUser">
+          <input type="text" name="email" placeholder="email" />
+        </form>
     </div>
 </body>
+
+<template name="date">
+    <li>{{dateInfo}} <button class="makeCurrent">aktuell</button> <button class="deleteDate">&times;</button></li>
+</template>
+<template name="user">
+    
+    <li>{{email}} <button class="deleteUser">&times;</button></li>
+</template>

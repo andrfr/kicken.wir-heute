@@ -1,0 +1,1 @@
+{"version":3,"sources":["meteor://💻app/lib/constants.js"],"names":[],"mappings":"yBAAA;AACA;AACA;AACA,sC","file":"/lib/constants.js","sourcesContent":["//constants used in the rest of the code\n\nDates = new Mongo.Collection('dates');\nUsers = new Mongo.Collection('users');"]}

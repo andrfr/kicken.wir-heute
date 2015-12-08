@@ -1,0 +1,1 @@
+{"version":3,"sources":["meteor://💻app/server/startup.js"],"names":[],"mappings":"yBAAA;AACA;AACA,K","file":"/server/startup.js","sourcesContent":["Meteor.startup(function () {\n    // code to run on server at startup\n  });"]}

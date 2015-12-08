@@ -1,0 +1,20 @@
+adapter: sftp
+host: arcturus.uberspace.de
+username: feintest
+password: J,ws8st&tSiU,g!?
+path: /var/www/virtual/feintest/html/kicken-wir-heute
+
+exclude:
+- .meteor
+- .gitignore
+- .git
+- client
+- lib
+- server
+- deploy-test.yml
+- deploy-test.sh
+- deploy-final.yml
+- deploy-final.sh
+
+addional:
+- .test/bundle/*: /

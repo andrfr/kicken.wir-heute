@@ -1,1 +1,0 @@
-{"version":3,"sources":["meteor://💻app/server/publications.js"],"names":[],"mappings":"yBAAA;AACA;AACA;AACA;AACA;AACA;AACA,G","file":"/server/publications.js","sourcesContent":["// Meteor.publish definitions\nMeteor.publish(\"dates\", function () {\n    return Dates.find({});\n});\nMeteor.publish(\"users\", function () {\n    return Users.find({});\n});"]}

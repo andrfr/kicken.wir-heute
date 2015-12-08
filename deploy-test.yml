@@ -1,6 +1,0 @@
-adapter: sftp
-host: arcturus.uberspace.de
-username: feintest
-password: J,ws8st&tSiU,g!?
-path: /var/www/virtual/feintest/html/kicken-wir-heute
-local_path: .test/bundle

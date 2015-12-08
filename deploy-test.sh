@@ -1,3 +1,4 @@
  #!/bin/bash 
 meteor build --debug --directory .test
-dandelion --config=deploy-test.yml deploy
+rsync -av --delete .test/bundle/ feintest@arcturus.uberspace.de:~/html/kicken-wir-heute/
+

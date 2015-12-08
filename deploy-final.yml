@@ -1,0 +1,24 @@
+adapter: sftp
+host: menkent.uberspace.de
+username: feinbrot
+password: J,ws8st&bSiU,g!?
+path: /var/www/virtual/feinbrot/html/muehlebeck
+
+exclude:
+- .gitignore
+- .git
+- deploy-test.yml
+- deploy-test.sh
+- deploy-final.yml
+- deploy-final.sh
+- .vagrant
+- .htaccess
+- Vagrantfile
+- muehlenshop/.htaccess
+- muehlenshop/config.php
+- muehlenshop/admin/config.php
+- muehlenshop/image/cache
+- muehlenshop/system/logs
+- muehlenshop/system/cache
+- muehlenshop/admin/fpdf/rechnungen
+- data

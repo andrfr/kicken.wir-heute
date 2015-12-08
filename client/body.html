@@ -3,25 +3,29 @@
         <h1>Kicken wir <span>{{currentDate.dateInfo}}</span>?</h1>
         <p id="big-state" class="{{datestateClass}}">{{datestate}}</p>
         <div id="date-info">
+            <form class="subscribeToDate">
+            <div class="subscribeInputWrapper">
+                <span class="input input--kohana">
+                    <input type="text" name="subscriberEmail" id="subscriberEmail" class="input__field input__field--kohana"/>
+                    <label class="input__label input__label--kohana" for="subscriberEmail">
+                        <div class="icon icon--kohana">
+                            <svg version="1.1" id="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
+                                <path d="M50 45.1c7.2 0 13-5.8 13-12.9 0-7.2-5.8-13-13-13 -7.2 0-12.9 5.8-12.9 13C37.1 39.3 42.8 45.1 50 45.1zM50 49c-10.1 0-18.3 8.2-18.3 18.3v13.5h36.7V67.3C68.3 57.2 60.1 49 50 49z"/>
+                            </svg>
+                        </div>
+                        <span class="input__label-content input__label-content--kohana">Name oder E-Mail eingeben</span>
+                    </label>
+                </span>
+                <button class="subscribe"><span>Ich kicke mit!</span></button>
+                <button class="unsubscribe"><span>Ohne mich!</span></button>
+                
+            </div>
+            </form>
         	<p>Bis jetzt nur:</p>
         	<ul id="subscriber">
             {{#each subscribers}} <li>{{email}}</li> {{/each}}
         	</ul>
             <p>Bist du dabei?</p>
-            <form class="subscribeToDate">
-            <div class="subscribeInputWrapper">
-                <span class="input-big">
-                	<input type="text" name="subscriberEmail" id="subscriberEmail"/>
-                	<label class="subscriberEmail-label" for="subscriberEmail">
-                		<div class="subscriberEmail-icon"></div>
-                		<span class="subscriberEmail-label-content">Name oder E-Mail eingeben</span>
-                	</label>
-                </span>
-                <button class="subscribe"><span>Ich kicke mit!</span></button>
-                <button class="unsubscribe"><span>Ohne mich!</span></button>
-            	
-            </div>
-            </form>
         	
         </div>
     </div>
@@ -51,6 +55,41 @@
           <input type="text" name="email" placeholder="email" />
         </form>
     </div>
+    <script>
+            (function() {
+                // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+                if (!String.prototype.trim) {
+                    (function() {
+                        // Make sure we trim BOM and NBSP
+                        var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                        String.prototype.trim = function() {
+                            return this.replace(rtrim, '');
+                        };
+                    })();
+                }
+
+                [].slice.call( document.querySelectorAll( '#subscriberEmail' ) ).forEach( function( inputEl ) {
+                    // in case the input is already filled..
+                    if( inputEl.value.trim() !== '' ) {
+                        classie.add( inputEl.parentNode, 'input--filled' );
+                    }
+
+                    // events:
+                    inputEl.addEventListener( 'focus', onInputFocus );
+                    inputEl.addEventListener( 'blur', onInputBlur );
+                } );
+
+                function onInputFocus( ev ) {
+                    classie.add( ev.target.parentNode, 'input--filled' );
+                }
+
+                function onInputBlur( ev ) {
+                    if( ev.target.value.trim() === '' ) {
+                        classie.remove( ev.target.parentNode, 'input--filled' );
+                    }
+                }
+            })();
+        </script>
 </body>
 
 <template name="date">

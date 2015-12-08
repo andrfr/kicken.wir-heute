@@ -1,0 +1,227 @@
+@import 'variables.scss';
+
+body {
+	background: url(/bg-im-alten-loh.jpg);
+	background-size: 100% auto contain;
+	background-position: top;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	color: $base-colour;
+	font-size: 20px;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+#date {
+	width: 70%;
+	margin: 3em auto 0;
+	text-align: center;
+}
+
+h1 {
+	font-size: 2.5em;
+	font-weight: 400;
+
+	span {
+		color: $bad-colour;
+	}
+}
+
+
+#big-state {
+	font-weight: 700;
+	padding: 0.4em 0;
+	text-transform: uppercase;
+	color: white;
+
+	&.no {
+		font-size: 5em;
+	}
+
+	&.yes {
+		font-size: 6em;
+	}
+}
+
+
+//------------FORM----------------
+
+button{
+	&:focus {
+		outline: none;
+	}
+	&span {
+		vertical-align: middle;
+	}
+
+	position: relative;
+	z-index: 1;
+}
+.big-input {
+	font-weight: 400;
+	font-size: 1.7em;
+	height: 80px;
+	border-radius: 0px;
+	border: none;
+	font-family: $basefont;
+	display: block;
+	float: left;
+	cursor: pointer;
+}
+
+.subscribeInputWrapper {
+	width: 80%; 
+	margin: 0 auto;
+	box-sizing: border-box;
+
+	button {
+		@extend .big-input;
+		font-size: 1.25em;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+		width: 25%;
+		color: white;
+		transition: color 0.3s;
+		background-color: none;
+		
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border-radius: inherit;
+			z-index: -1;
+			transform: scale3d(1, 1, 1);
+			transition: box-shadow 0.3s, transform 0.3s;
+		}
+		
+		&.unsubscribe {
+			&::before {
+				box-shadow: inset 0 0 0 40px $bad-colour;
+			}
+
+			&:hover {
+				color: $bad-colour;
+
+				&::before {
+					box-shadow: inset 0 0 0 5px $bad-colour;
+
+				}
+			}
+		}
+
+		&.subscribe {
+			&::before {
+				box-shadow: inset 0 0 0 40px $good-colour;
+			}
+
+			&:hover {
+				color: $good-colour;
+
+				&::before {
+					box-shadow: inset 0 0 0 5px $good-colour;
+				}
+			}
+		}
+
+		&:hover {
+			&::before {
+				transform: scale3d(1, 1, 1);
+			}
+		}
+		
+		&:last-child {
+			float: none;
+		}
+	}
+	
+
+	
+	//----------INPUTFIELD-------------
+
+	.input-big {
+		width: 50%;
+		float: left;
+		position: relative;
+		z-index: 1;
+		display: inline-block;
+		
+		//overflow: hidden;
+		background: #fff;
+		//margin: 1em;
+		//max-width: 350px;
+		//width: calc(100% - 2em);
+		//vertical-align: top;
+
+		.subscriberEmail-label {
+			position: absolute;
+			width: 100%;
+			height: 80px;
+			text-align: left;
+			pointer-events: none;
+			color: #aaa;
+
+		}
+
+		.subscriberEmail-label-content {
+			font-weight: 300;
+			font-size: 1.5em;
+			display: inline-block;
+			width: auto;
+			transform: translate3d(-40px, 0, 0);
+			transition: transform 0.3s, opacity 0.3s;
+			line-height: 80px;
+			height: 80px;
+		}
+
+		.subscriberEmail-icon {
+			height: 51px;
+			width: 80px;
+			background-color: $good-colour;
+			display: inline-block;
+			transform: translate3d(-40px, 0, 0) scale3d(0, 1, 1);
+			opacity: 0;
+			transition: transform 0.3s, opacity 0.3s;
+		}
+	}
+
+	#subscriberEmail {
+		@extend .big-input;
+
+		opacity: 1;
+		position: relative;
+		display: block;
+		float: right;
+		//padding: 0.8em;
+		//width: 60%;
+		border: none;
+		//border-radius: 0;
+		//background: #f0f0f0;
+		//color: #aaa;
+		width: 100%;
+		background: transparent;
+		
+
+		cursor: text;
+		
+		//width: 50%;
+		padding:  0 0 0 0.7em;
+		box-shadow: inset -3px 3px 4px 0px rgba(0,0,0,0.18);
+
+		&:focus + .subscriberEmail-label .subscriberEmail-label-content {
+			opacity: 0;
+			transform: translate3d(100px, 0, 0);
+		}
+
+		&:focus + .subscriberEmail-label .subscriberEmail-icon {
+			transform: translate3d(-80px, 0, 0) scale3d(1, 1, 1);
+			opacity: 1;
+		}
+	}
+
+}
+

@@ -2,8 +2,8 @@
 
 <body>
     <div id="date">
-        <h1>Kicken wir {{currentDate.dateInfo}}?</h1>
-        <p>{{datestate}}</p>
+        <h1>Kicken wir <span>{{currentDate.dateInfo}}</span>?</h1>
+        <p id="big-state" class="{{datestateClass}}">{{datestate}}</p>
         <div id="date-info">
         	<p>Bis jetzt nur:</p>
         	<ul id="subscriber">
@@ -11,9 +11,18 @@
         	</ul>
             <p>Bist du dabei?</p>
             <form class="subscribeToDate">
-                <input type="text" name="subscriberEmail" class="subscriberEmail" placeholder="email" />
-                <button class="subscribe">Ich kicke mit!</button>
-                <button class="unsubscribe">Ohne mich!</button>
+            <div class="subscribeInputWrapper">
+                <span class="input-big">
+                	<input type="text" name="subscriberEmail" id="subscriberEmail"/>
+                	<label class="subscriberEmail-label" for="subscriberEmail">
+                		<div class="subscriberEmail-icon"></div>
+                		<span class="subscriberEmail-label-content">Name oder E-Mail eingeben</span>
+                	</label>
+                </span>
+                <button class="subscribe"><span>Ich kicke mit!</span></button>
+                <button class="unsubscribe"><span>Ohne mich!</span></button>
+            	
+            </div>
             </form>
         	
         </div>

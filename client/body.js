@@ -9,7 +9,8 @@ Template.body.helpers({
 	currentUser: function(){
 		return Users.findOne({_id: Session.get("currentUser")});
 	},
-	datestate: "Nein, es haben sich zu wenige angemeldet.",
+	datestate: "Nein, leider nicht!",
+	datestateClass: "no",
 	isSubscripted: false,
 	userbalance: "3€",
 	subscribers: function(){

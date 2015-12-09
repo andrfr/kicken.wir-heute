@@ -34,14 +34,14 @@ Template.body.events({
 	"click .unsubscribe": function (event, template) {
 		event.preventDefault();
 
-    	Meteor.call('setSubscription', Session.get("currentDate"), template.find('.subscriberEmail').value, false, function (error, result) {
+    	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriberEmail').value, false, function (error, result) {
     		// console.log("result:" + result);
     	});
 	},
 	"click .subscribe": function (event, template) {
 		event.preventDefault();
 
-    	Meteor.call('setSubscription', Session.get("currentDate"), template.find('.subscriberEmail').value, true, function (error, result) {
+    	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriberEmail').value, true, function (error, result) {
     		// console.log("result:" + result);
     	});
 

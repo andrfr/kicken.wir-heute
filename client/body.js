@@ -36,12 +36,16 @@ Template.body.events({
 
     	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriberEmail').value, false, function (error, result) {
     		// console.log("result:" + result);
+    		classie.remove(document.querySelector("#action"), 'in');
+    		classie.add(document.querySelector("#action"), 'out');
     	});
 	},
 	"click .subscribe": function (event, template) {
 		event.preventDefault();
 
     	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriberEmail').value, true, function (error, result) {
+    		classie.remove(document.querySelector("#action"), 'out');
+    		classie.add(document.querySelector("#action"), 'in');
     		// console.log("result:" + result);
     	});
 

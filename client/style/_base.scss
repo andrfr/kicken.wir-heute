@@ -1,0 +1,38 @@
+body {
+	background: url(/bg-im-alten-loha.jpg);
+	background-size: 100% auto contain;
+	background-position: top;
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	color: $base-colour;
+	font-size: 20px;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+h1 {
+	font-size: 2.5em;
+	font-weight: 400;
+
+	span {
+		color: $bad-colour;
+	}
+}
+
+button{
+	&:focus {
+		outline: none;
+	}
+	&span {
+		vertical-align: middle;
+	}
+
+	position: relative;
+	z-index: 1;
+}
+
+input:focus {
+	outline: none;
+}

@@ -47,10 +47,7 @@
     transform: translate3d(0, -60px, 0);
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
-    &::after {}
-    &:first-child {
-        float: none;
-    }
+
     i {
         display: block;
         position: absolute;
@@ -65,17 +62,14 @@
             fill: $good-colour;
         }
         &:hover {
-            background-color: $good-colour;
             z-index: 20;
-            svg {
-                fill: white;
-            }
         }
     }
-
     &--add-player,
     &--add-date,
     &--balance {
+
+
         &::after {
             position: absolute;
             top: 0;
@@ -83,25 +77,32 @@
             content: '';
             width: 60px;
             height: 60px;
-            background-color: red;
+            background-color: $good-colour;
             pointer-events: none;
             z-index: 0;
             line-height: 60px;
             color: white;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        &:hover::after {
+            z-index: 10;
+            transform: scaleX(20);
         }
     }
-    /*&--add-player:hover + &--add-player::after, &--add-date:hover + &--add-date::after, &--balance:hover + &--balance::after {
-       z-index: 1000; 
-    }*/
-    &:hover + &::after {
-        z-index: 10;
-        transform: scaleX(4);
-    }
+  
 }
 
-.user-account__option--balance:hover + .user-account__option--balance::after {
-    z-index: 10;
-    transform: transition3d(-50px, -50px, 0);
-    content: 'add-player'
+
+
+/*.user-account__option--add-player::before {
+    content:'adpla';
 }
+
+.user-account__option--add-date::before {
+    content:'addate';
+}
+
+.user-account__option--balance::before {
+    content:'bal';
+}*/

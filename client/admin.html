@@ -2,7 +2,7 @@
 <div id="meta">
 	<p>Alle Termine: </p>
 	<ul>
-	{{#each dates}} {{> date}} {{/each}}
+	{{#each dates}} {{> dateListElement}} {{/each}}
 	</ul>
 	<p>Termin erstellen</p>
 	<form class="createDate">
@@ -24,7 +24,7 @@
 	</form>
 </div>
 </template>
-<template name="date">
+<template name="dateListElement">
     <li>{{location}} : {{formatDate date}}
 	<a href='/date/{{_id}}'>link</a>
         <button class="deleteDate">&times;</button>

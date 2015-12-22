@@ -1,3 +1,6 @@
+Router.configure({
+	layoutTemplate: 'main'
+});
 Router.route('/', function() {
 	var dates = Dates.find({}, {sort: {date: 1}}).fetch(),
 	today = new Date(),

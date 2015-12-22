@@ -1,0 +1,90 @@
+//--------------#user-account--------------
+#user-account {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 25em;
+    height: 60px;
+    background-color: $good-colour;
+    padding-left: 1em;
+    transition: transform 0.3s ease-in-out;
+    span {
+        position: absolute;
+        line-height: 60px;
+        color: white;
+        transition: transform 0.3s ease-in-out 0.1s, opacity 0.3s 0.2s;
+    }
+    &.is-visible {
+        transform: translate3d(0, 0, 0);
+        .user-account-option {
+            transform: translate3d(0, 0, 0);
+            transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+        }
+        span {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+    }
+    &.is-hidden {
+        transform: translate3d(0, -60px, 0);
+        .user-account-option {
+            transform: translate3d(0, -60px, 0);
+        }
+        span {
+            transform: translate3d(0, -60px, 0);
+            opacity: 0;
+        }
+    }
+}
+
+.user-account-option {
+    background-color: white;
+    height: 60px;
+    width: 60px;
+    float: right;
+    margin-left: 2px;
+    transform: translate3d(0, -60px, 0);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:first-child {
+        float: none;
+    }
+
+    i {
+        display: block;
+        width: 60px;
+        height: 60px;
+    }
+
+    &:hover {
+        background-color: $good-colour;
+
+        #show-balance, #add-player, #add-date  {
+            .icon-user {
+            fill: white;
+            }
+        }
+    }
+}
+
+#show-balance {
+    transition-delay: 0.3s;
+}
+
+#add-player {
+    transition-delay: 0.1s;
+    .icon-user {
+        fill: $good-colour;
+    }
+}
+
+#add-date {
+    transition-delay: 0.2s;
+}
+
+.icon-euro-sign {
+    width: 100%;
+    height: 100%;
+    fill: $good-colour;
+}

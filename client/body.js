@@ -31,7 +31,7 @@ Template.body.helpers({
 });
 
 Template.body.events({
-	"click .do-unsubscribe-to-date": function (event, template) {
+	"click .unsubscribe-button": function (event, template) {
 		event.preventDefault();
 
     	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriber-email').value, false, function (error, result) {
@@ -40,7 +40,7 @@ Template.body.events({
     		classie.add(document.querySelector("#user-account"), 'is-hidden');
     	});
 	},
-	"click .do-subscribe-to-date": function (event, template) {
+	"click .subscribe-button": function (event, template) {
 		event.preventDefault();
 
     	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriber-email').value, true, function (error, result) {

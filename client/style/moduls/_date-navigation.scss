@@ -1,0 +1,40 @@
+.next-date {
+	position:absolute;
+	right: 2em;
+	top: 0;
+	bottom: 0;
+	height: 130px;
+	width: auto;
+	margin: auto;
+}
+
+.previous-date {
+	position:absolute;
+	left: 2em;
+	top: 0;
+	bottom: 0;
+	height: 130px;
+	width: auto;
+	margin: auto;
+
+	.icon-chevron {
+		transform: scaleX(-1);
+	}
+}
+
+.next-date, .previous-date {
+	i {
+		height: 100%;
+	}
+
+	.icon-chevron {
+		display: inline-block;
+		fill: white;
+		height: 100%;
+		cursor: pointer;
+
+		&:hover {
+			fill: $good-colour;
+		}
+	}
+}

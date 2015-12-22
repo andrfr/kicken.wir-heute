@@ -11,11 +11,12 @@ Meteor.methods({
     }
 
   },
-  createDate: function(dateInfo) {
-    Dates.insert({
-      dateInfo: dateInfo,
-      subscribers: []
-    });
+	createDate: function(description, date) {
+		Dates.insert({
+		description: description,
+		date:date,
+		subscribers: []
+	});
   },
   createUser: function(email) {
     Users.insert({

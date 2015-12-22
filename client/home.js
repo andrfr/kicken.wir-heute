@@ -2,7 +2,7 @@ Meteor.subscribe("dates");
 Meteor.subscribe("users");
 
 
-Template.body.helpers({
+Template.home.helpers({
 	currentDate: function(){
 		return Dates.findOne({_id: Session.get("currentDate")});
 	},
@@ -30,7 +30,7 @@ Template.body.helpers({
 	}
 });
 
-Template.body.events({
+Template.home.events({
 	"click .unsubscribe-button": function (event, template) {
 		event.preventDefault();
 
@@ -49,47 +49,5 @@ Template.body.events({
     		// console.log("result:" + result);
     	});
 
-    },
-	"submit .createDate": function (event) {
-      // Prevent default browser form submit
-      event.preventDefault();
-
-      // Get value from form element
-      var text = event.target.date.value;
-
-      // Insert a task into the collection
-      Meteor.call("createDate", text);
-
-      // Clear form
-      event.target.date.value = "";
-    },
-    "submit .createUser": function (event) {
-      // Prevent default browser form submit
-      event.preventDefault();
-
-      // Get value from form element
-      var text = event.target.email.value;
-
-      // Insert a task into the collection
-      Meteor.call("createUser", text);
-
-      // Clear form
-      event.target.email.value = "";
     }
-});
-
-Template.user.events({
-	"click .deleteUser": function() {
-		Meteor.call("deleteUser", this._id);
-	}
-});
-
-Template.date.events({
-	"click .deleteDate": function() {
-		Meteor.call("deleteDate", this._id);
-	},
-	"click .makeCurrent": function() {
-
-		Session.set("currentDate", this._id);
-	}
 });

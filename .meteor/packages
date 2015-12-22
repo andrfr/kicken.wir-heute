@@ -19,3 +19,4 @@ random
 ejson
 spacebars
 check
+iron:router

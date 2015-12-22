@@ -1,4 +1,4 @@
-<body>
+<template name="home">
     <!---DATE-NAVIGATION-START-->
     <div class="next-date">
         <i class="arrow-right">
@@ -70,25 +70,6 @@
         </ul>
         <p><span class="highlight-subscribed">Diese 7 Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">3 Spieler </span>können leider nicht).</p>
     </div>
-    <hr />
-    <div id="meta">
-        <p>Alle Termine: </p>
-        <ul>
-            {{#each dates}} {{> date}} {{/each}}
-        </ul>met
-        <p>Termin erstellen</p>
-        <form class="createDate">
-            <input type="text" name="date" placeholder="date" />
-        </form>
-        <p>Alle User: </p>
-        <ul>
-            {{#each users}} {{> user}} {{/each}}
-        </ul>
-        <p>User erstellen</p>
-        <form class="createUser">
-            <input type="text" name="email" placeholder="email" />
-        </form>
-    </div>
     <script>
     (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
@@ -124,15 +105,5 @@
         }
     })();
     </script>
-</body>
-<template name="date">
-    <li>{{dateInfo}}
-        <button class="makeCurrent">aktuell</button>
-        <button class="deleteDate">&times;</button>
-    </li>
 </template>
-<template name="user">
-    <li>{{email}}
-        <button class="deleteUser">&times;</button>
-    </li>
-</template>
+

@@ -1,0 +1,32 @@
+<template name="admin">
+<div id="meta">
+        <p>Alle Termine: </p>
+        <ul>
+            {{#each dates}} {{> date}} {{/each}}
+        </ul>met
+        <p>Termin erstellen</p>
+        <form class="createDate">
+            <input type="text" name="date" placeholder="date" />
+        </form>
+        <p>Alle User: </p>
+        <ul>
+            {{#each users}} {{> user}} {{/each}}
+        </ul>
+        <p>User erstellen</p>
+        <form class="createUser">
+            <input type="text" name="email" placeholder="email" />
+        </form>
+    </div>
+</template>
+<template name="date">
+    <li>{{dateInfo}}
+        <button class="makeCurrent">aktuell</button>
+        <button class="deleteDate">&times;</button>
+    </li>
+</template>
+<template name="user">
+    <li>{{email}}
+        <button class="deleteUser">&times;</button>
+    </li>
+</template>
+

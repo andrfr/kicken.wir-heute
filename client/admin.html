@@ -1,26 +1,31 @@
 <template name="admin">
 <div id="meta">
-        <p>Alle Termine: </p>
-        <ul>
-            {{#each dates}} {{> date}} {{/each}}
-        </ul>met
-        <p>Termin erstellen</p>
-        <form class="createDate">
-            <input type="text" name="date" placeholder="date" />
-        </form>
-        <p>Alle User: </p>
-        <ul>
-            {{#each users}} {{> user}} {{/each}}
-        </ul>
-        <p>User erstellen</p>
-        <form class="createUser">
-            <input type="text" name="email" placeholder="email" />
-        </form>
-    </div>
+	<p>Alle Termine: </p>
+	<ul>
+	{{#each dates}} {{> date}} {{/each}}
+	</ul>
+	<p>Termin erstellen</p>
+	<form class="createDate">
+		<input type="text" name="description" placeholder="description" />
+		<input type="text" name="day" placeholder="day" />
+		<input type="text" name="month" placeholder="month" />
+		<input type="text" name="year" placeholder="year" />
+		<input type="text" name="hour" placeholder="hour" />
+		<input type="text" name="minute" placeholder="minute" />
+		<input type="submit" />
+	</form>
+	<p>Alle User: </p>
+	<ul>
+	{{#each users}} {{> user}} {{/each}}
+	</ul>
+	<p>User erstellen</p>
+	<form class="createUser">
+	<input type="text" name="email" placeholder="email" />
+	</form>
+</div>
 </template>
 <template name="date">
-    <li>{{dateInfo}}
-        <button class="makeCurrent">aktuell</button>
+    <li>{{description}} : {{formatDate date}}
         <button class="deleteDate">&times;</button>
     </li>
 </template>

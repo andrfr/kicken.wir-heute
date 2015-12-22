@@ -20,3 +20,5 @@ ejson
 spacebars
 check
 iron:router
+momentjs:moment
+rzymek:moment-locale-de

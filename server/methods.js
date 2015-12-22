@@ -11,18 +11,18 @@ Meteor.methods({
     }
 
   },
-	createDate: function(description, date) {
-		Dates.insert({
-		description: description,
-		date:date,
-		subscribers: []
+		createDate: function(location, date) {
+			Dates.insert({
+			location: location,
+			date:date,
+			subscribers: []
+		});
+	},
+	createUser: function(email) {
+		Users.insert({
+		email: email
 	});
-  },
-  createUser: function(email) {
-    Users.insert({
-      email: email
-    });
-  },
+	},
   deleteUser: function (userId) {
     Users.remove(userId);
   },

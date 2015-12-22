@@ -6,7 +6,7 @@
 	</ul>
 	<p>Termin erstellen</p>
 	<form class="createDate">
-		<input type="text" name="description" placeholder="description" />
+		<input type="text" name="location" placeholder="location" />
 		<input type="text" name="day" placeholder="day" />
 		<input type="text" name="month" placeholder="month" />
 		<input type="text" name="year" placeholder="year" />
@@ -25,7 +25,8 @@
 </div>
 </template>
 <template name="date">
-    <li>{{description}} : {{formatDate date}}
+    <li>{{location}} : {{formatDate date}}
+	<a href='/date/{{_id}}'>link</a>
         <button class="deleteDate">&times;</button>
     </li>
 </template>

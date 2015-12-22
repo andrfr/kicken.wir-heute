@@ -36,16 +36,16 @@ Template.home.events({
 
     	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriber-email').value, false, function (error, result) {
     		// console.log("result:" + result);
-    		classie.remove(document.querySelector("#user-account"), 'is-visible');
-    		classie.add(document.querySelector("#user-account"), 'is-hidden');
+    		classie.remove(document.querySelector(".user-account"), 'is-visible');
+    		classie.add(document.querySelector(".user-account"), 'is-hidden');
     	});
 	},
 	"click .subscribe-button": function (event, template) {
 		event.preventDefault();
 
     	Meteor.call('setSubscription', Session.get("currentDate"), template.find('#subscriber-email').value, true, function (error, result) {
-    		classie.remove(document.querySelector("#user-account"), 'is-hidden');
-    		classie.add(document.querySelector("#user-account"), 'is-visible');
+    		classie.remove(document.querySelector(".user-account"), 'is-hidden');
+    		classie.add(document.querySelector(".user-account"), 'is-visible');
     		// console.log("result:" + result);
     	});
 

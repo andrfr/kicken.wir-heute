@@ -1,20 +1,4 @@
-<template name="home">
-    <!---DATE-NAVIGATION-START-->
-    <div class="next-date">
-        <i class="arrow-right">
-            <svg version="1.1" class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.171 105.436" xml:space="preserve">  
-                        <path d="M57.172,52.691L12.392,0L0,10.453L36.979,52.84L0.313,94.953l12.387,10.482L57.172,52.691z"/>
-            </svg>
-        </i>
-    </div>
-    <div class="previous-date">
-        <i class="arrow-left">
-        <svg version="1.1" class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.171 105.436" xml:space="preserve">  
-                        <path d="M57.172,52.691L12.392,0L0,10.453L36.979,52.84L0.313,94.953l12.387,10.482L57.172,52.691z"/>
-            </svg>
-    </i>
-    </div>
-<!---DATE-NAVIGATION-END-->
+<template name="main">
 
 <!---USER-ACCOUNT-START-->
     <div class="user-account is-hidden">
@@ -43,33 +27,8 @@
     <!---USER-ACCOUNT-END-->
 
 
+	{{> yield}}
 
-    <div class="container">
-        <h1>Kicken wir <span>{{currentDate.dateInfo}}</span>?</h1>
-        <p class="date-state {{datestateClass}}">{{datestate}}</p>
-        <form class="subscriber-form">
-            <div class="subscriber-form__input-wrapper">
-                <span class="input">
-                    <input type="text" name="subscriber-email" id="subscriber-email" class="input__field"/>
-                    <label class="input__label" for="subscriber-email">
-                        <i class="icon icon__subscriber-email">
-                            <svg version="1.1" class="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
-                                <path d="M50 45.1c7.2 0 13-5.8 13-12.9 0-7.2-5.8-13-13-13 -7.2 0-12.9 5.8-12.9 13C37.1 39.3 42.8 45.1 50 45.1zM50 49c-10.1 0-18.3 8.2-18.3 18.3v13.5h36.7V67.3C68.3 57.2 60.1 49 50 49z"/>
-                            </svg>
-                        </i>
-                        <span class="input__label-content">Name oder E-Mail eingeben</span>
-                </label>
-                </span>
-                <button class="subscribe-button"><span>Ich kicke mit!</span></button>
-                <button class="unsubscribe-button"><span>Ohne mich!</span></button>
-            </div>
-        </form>
-        <ul class="subscriber-list">
-            {{#each subscribers}}
-            <li>{{email}}</li> {{/each}}
-        </ul>
-        <p><span class="highlight-subscribed">Diese 7 Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">3 Spieler </span>können leider nicht).</p>
-    </div>
     <script>
     (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
@@ -106,4 +65,3 @@
     })();
     </script>
 </template>
-

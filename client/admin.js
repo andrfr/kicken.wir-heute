@@ -35,7 +35,7 @@ Template.admin.events({
 	"submit .createDate": function (event) {
 	// Prevent default browser form submit
 	event.preventDefault();
-	var description = event.target.description.value,
+	var location = event.target.location.value,
 	year = event.target.year.value,
 	month = event.target.month.value,
 	day = event.target.day.value,
@@ -44,10 +44,10 @@ Template.admin.events({
 	date = new Date(year, month, day, hour, minute);
 
 	// Insert a date into the collection
-	Meteor.call("createDate", description, date);
+	Meteor.call("createDate", location, date);
 
 	// Clear form
-	event.target.description.value = "",
+	event.target.location.value = "",
 	event.target.year.value = "",
 	event.target.month.value = "",
 	event.target.day.value = "",
@@ -84,8 +84,4 @@ Template.date.events({
 		Session.set("currentDate", this._id);
 	}
 });
-Template.date.helpers({
-	formatDate: function(date) {
-		return moment(date).format('Do MMMM YYYY [um] h:mm');
-	}
-});
+	

@@ -2,7 +2,7 @@ Meteor.subscribe("dates");
 Meteor.subscribe("users");
 
 
-Template.home.helpers({
+Template.date.helpers({
 	currentDate: function(){
 		return Dates.findOne({_id: Session.get("currentDate")});
 	},
@@ -30,7 +30,7 @@ Template.home.helpers({
 	}
 });
 
-Template.home.events({
+Template.date.events({
 	"click .unsubscribe-button": function (event, template) {
 		event.preventDefault();
 

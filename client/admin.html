@@ -2,11 +2,11 @@
 <div id="meta">
 	<p>Alle Termine: </p>
 	<ul>
-	{{#each dates}} {{> date}} {{/each}}
+	{{#each dates}} {{> dateListElement}} {{/each}}
 	</ul>
 	<p>Termin erstellen</p>
 	<form class="createDate">
-		<input type="text" name="description" placeholder="description" />
+		<input type="text" name="location" placeholder="location" />
 		<input type="text" name="day" placeholder="day" />
 		<input type="text" name="month" placeholder="month" />
 		<input type="text" name="year" placeholder="year" />
@@ -24,8 +24,9 @@
 	</form>
 </div>
 </template>
-<template name="date">
-    <li>{{description}} : {{formatDate date}}
+<template name="dateListElement">
+    <li>{{location}} : {{formatDate date}}
+	<a href='/date/{{_id}}'>link</a>
         <button class="deleteDate">&times;</button>
     </li>
 </template>

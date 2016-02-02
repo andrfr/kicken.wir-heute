@@ -1,54 +1,47 @@
 .next-date {
-	position:absolute;
-	right: 2em;
-	top: 0;
-	bottom: 0;
-	height: 130px;
-	width: auto;
-	margin: auto;
-
-	.icon-chevron {
-		transform: scaleX(1);
-
-		&:hover {
-			transform: scale(1.2);
-		}
-	}
+    margin: auto;
+    right: 2em;
+    .icon-chevron {
+        transform: scaleX(1);
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+    @media (max-width: 1444px) {right: 1em}
 }
 
 .previous-date {
-	position:absolute;
-	left: 2em;
-	top: 0;
-	bottom: 0;
-	height: 130px;
-	width: auto;
-	margin: auto;
-
-	.icon-chevron {
-		transform: scaleX(-1) ;
-
-		&:hover {
-			transform: scale(-1.2, 1.2);
-		}
-	}
+    left: 2em;
+    width: auto;
+    margin: auto;
+    .icon-chevron {
+        transform: scaleX(-1);
+        &:hover {
+            transform: scale(-1.2, 1.2);
+        }
+    }
+    @media (max-width: 1444px) {left: 1em}
 }
 
-.next-date, .previous-date {
-	i {
-		height: 100%;
-	}
+.next-date,
+.previous-date {
+    position: absolute;
+    height: 6.5em;
+    width: auto;
+    top: 0;
+    bottom: 0;
 
-	.icon-chevron {
-		display: inline-block;
-		fill: white;
-		height: 100%;
-		cursor: pointer;
-		transition: transform 0.2s ease-in-out, fill 0.2s ease-in-out, filter 0.2s ease-in-out;
+    .icon-chevron {
+        display: inline-block;
+        fill: white;
+        height: 100%;
+        cursor: pointer;
+        transition: transform 0.15s ease-in-out, fill 0.15s ease-in-out; //filter 0.2s ease-in-out;
+        &:hover {
+            fill: $bad-colour;
+            /*filter: drop-shadow( 6px 6px 6px #555);*/
+        }
+    }
 
-		&:hover {
-			fill: $bad-colour;
-			filter: drop-shadow( 6px 6px 15px #333);
-		}
-	}
+	@media (max-width: 768px) {top: -18em; height: 4em}
 }

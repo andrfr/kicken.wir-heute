@@ -6,6 +6,9 @@ body {
 	font-weight: 400;
 	color: $base-colour;
 	font-size: 20px;
+	
+	@media (max-width: 1444px) {font-size: 18px}
+	@media (max-width: 768px) {font-size: 16px}
 }
 
 *, *:before, *:after {
@@ -19,6 +22,8 @@ h1 {
 	span {
 		color: $bad-colour;
 	}
+
+	@media (max-width: 768px) {padding: 0 1.5em}
 }
 
 button{
@@ -39,6 +44,10 @@ input:focus {
 
 .container {
     width: 70%;
-    margin: 7.5em auto 0;
+    margin: 10em auto 0;
     text-align: center;
+    height: 100%;
+
+    @media (max-width: 1444px) {width: 77%}
+    @media (max-width: 768px) {width: 92%; margin: 7em auto 0;}
 }

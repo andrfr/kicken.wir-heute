@@ -1,7 +1,6 @@
 .big-input {
     font-weight: 400;
     font-size: 1.7em;
-    height: 80px;
     border-radius: 0px;
     border: none;
     font-family: $basefont;
@@ -21,8 +20,16 @@
     &.yes {
         font-size: 6em;
     }
+    @media (max-width: 768px) {
+        padding: 0.6em 1em;
+        &.no {
+            font-size: 4em;
+        }
+        &.yes {
+            font-size: 5em;
+        }
+    }
 }
-
 
 .subscriber-form__input-wrapper {
     width: 80%;
@@ -31,9 +38,11 @@
     button {
         @extend .big-input;
         font-size: 1.25em;
+        height: 100%;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        letter-spacing: 0.1em;
         width: 25%;
+        height: 3.2em;
         color: white;
         transition: color 0.3s;
         background-color: none;
@@ -51,23 +60,23 @@
         }
         &.unsubscribe-button {
             &::before {
-                box-shadow: inset 0 0 0 40px $bad-colour;
+                box-shadow: inset 0 0 0 2em $bad-colour;
             }
             &:hover {
                 color: $bad-colour;
                 &::before {
-                    box-shadow: inset 0 0 0 5px $bad-colour;
+                    box-shadow: inset 0 0 0 0.25em $bad-colour;
                 }
             }
         }
         &.subscribe-button {
             &::before {
-                box-shadow: inset 0 0 0 40px $good-colour;
+                box-shadow: inset 0 0 0 2em $good-colour;
             }
             &:hover {
                 color: $good-colour;
                 &::before {
-                    box-shadow: inset 0 0 0 5px $good-colour;
+                    box-shadow: inset 0 0 0 0.25em $good-colour;
                 }
             }
         }
@@ -79,6 +88,15 @@
         &:last-child {
             float: none;
         }
+        @media (max-width: 1060px) {
+            width: 50%;
+        }
+    }
+    @media (max-width: 1444px) {
+        width: 90%
+    }
+    @media (max-width: 768px) {
+        width: 100%
     }
 }
 
@@ -91,6 +109,10 @@
     background: #fff;
     width: 50%;
     float: left;
+    height: 4em;
+    @media (max-width: 1060px) {
+        width: 100%
+    }
 }
 
 .input__field {
@@ -105,8 +127,11 @@
     width: 100%;
     background: transparent;
     color: #6a7989;
-    height: 80px;
-    padding-left: 0.5em;
+    height: 100%;
+    padding: 0 0 0 0.5em;
+    @media (max-width: 1060px) {
+        padding-left: 2.72222em;
+    }
 }
 
 .input__label {
@@ -120,36 +145,34 @@
 }
 
 .input__label-content {
-	//equals placeholder text for inputfield, will be animated when focusing input
-
+    //equals placeholder text for inputfield, will be animated when focusing input
     position: relative;
     font-size: 1.8em;
     font-weight: 300;
     display: block;
     float: left;
     width: auto;
-    transform: translate3d(-60px, 0, 0);
+    transform: translate3d(-1.5em, 0, 0);
     transition: transform 0.3s, opacity 0.3s;
-    line-height: 80px;
+    line-height: 2.2222em;
 }
 
 .icon__subscriber-email {
     display: inline-block;
-    transform: translate3d(-40px, 0, 0) scale3d(0, 1, 1);
-    width: 80px;
-    height: 80px;
+    transform: translate3d(-2em, 0, 0) scale3d(0, 1, 1);
+    width: 4em;
+    height: 4em;
     background-color: #5B7A7F;
     transition: background-color 0.3s, transform 0.3s;
     float: left;
 }
 
-
- .input__field:focus + .input__label .input__label-content,
+.input__field:focus + .input__label .input__label-content,
 .input--filled .input__label-content {
-	//moves placeholder-text to the right and fades out
-	opacity: 0;
-	transform: translate3d(100px, 0, 0);
-} 
+    //moves placeholder-text to the right and fades out
+    opacity: 0;
+    transform: translate3d(2em, 0, 0);
+}
 
 .input__label-content,
 .icon,
@@ -161,13 +184,16 @@
 .input__field:focus + .input__label .icon,
 .input--filled .icon {
     background-color: $good-colour;
-    transform: translate3d(-80px, 0, 0) scale3d(1, 1, 1);
-}  
+    transform: translate3d(-4em, 0, 0) scale3d(1, 1, 1);
+    @media (max-width: 1060px) {
+        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    }
+}
 
 .icon-user {
     width: 100%;
     height: 100%;
-    padding: 7px;
+    padding: 0.3em;
     fill: #fff;
 }
 
@@ -197,4 +223,3 @@
 .highlight-unsubscribed {
     color: $bad-colour;
 }
-

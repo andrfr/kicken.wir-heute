@@ -23,9 +23,9 @@ Router.route('/', function() {
 Router.route('/date/:_id', {
 	template: 'date',
 	data: function() {
-		var currentDate = this.params._id;
-		return Dates.findOne({_id: currentDate});
-	
+		//var dateSubscribers = Users.find({_id: {$in: currentDate.subscribers}});
+		//currentDate.subscribers = dateSubscribers;
+		return Dates.findOne({_id: this.params._id});	
 	}
 });
 Router.route('admin');

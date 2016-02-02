@@ -37,11 +37,13 @@
                 <button class="unsubscribe-button"><span>Ohne mich!</span></button>
             </div>
         </form>
-        <ul class="subscriber-list">
+	<ul class="subscriber-list">
             {{#each subscribers}}
-            <li>{{email}}</li> {{/each}}
+            <li>{{email}}</li>
+		{{/each}}
         </ul>
-        <p><span class="highlight-subscribed">Diese 7 Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">3 Spieler </span>können leider nicht).</p>
+        <p><span class="highlight-subscribed">Diese {{numSubscribers}} Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">3 Spieler </span>können leider nicht).</p>
+
     </div>
 </template>
 

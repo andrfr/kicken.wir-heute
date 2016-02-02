@@ -1,21 +1,19 @@
 Meteor.methods({
-  setSubscription: function(dateId, email, subState) {
-    var userId = Users.findOne({email: email})._id;
-    console.log(userId);
-    var subscribers = Dates.findOne({_id: dateId}, {fields: {subscribers: 1}}).subscribers;
-    console.log(subscribers.indexOf(userId));
-    if (subscribers.indexOf(userId) === -1 && subState) {
-      Dates.update({_id: dateId}, {$push: {subscribers: userId}});
-    } else if (! subState){
-      Dates.update({_id: dateId}, {$pull: {subscribers: userId}});
-    }
+	setSubscription: function(dateId, email, subState) {
+		var userId = Users.findOne({email: email})._id;
+		//var subscribers = Dates.findOne({_id: dateId}, {fields: {subscribers: 1}}).subscribers;
+		//console.log(subscribers.indexOf(userId));
+		if (subState) {
+			DatesUsers.update({date_id: dateId, user_id: userId}, {date_id: dateId, user_id: userId}, {upsert: true});
+		} else {
+			DatesUsers.remove({date_id: dateId, user_id: userId});
+		}
 
-  },
-		createDate: function(location, date) {
-			Dates.insert({
+	},
+	createDate: function(location, date) {
+		Dates.insert({
 			location: location,
 			date:date,
-			subscribers: []
 		});
 	},
 	createUser: function(email) {
@@ -23,10 +21,10 @@ Meteor.methods({
 		email: email
 	});
 	},
-  deleteUser: function (userId) {
-    Users.remove(userId);
-  },
-  deleteDate: function (dateId) {
-    Dates.remove(dateId);
-  }
+	deleteUser: function (userId) {
+	    Users.remove(userId);
+	  },
+	  deleteDate: function (dateId) {
+	    Dates.remove(dateId);
+	  }
 });

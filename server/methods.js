@@ -1,13 +1,15 @@
 Meteor.methods({
 	setSubscription: function(dateId, email, subState) {
-		var userId = Users.findOne({email: email})._id;
-		//var subscribers = Dates.findOne({_id: dateId}, {fields: {subscribers: 1}}).subscribers;
-		//console.log(subscribers.indexOf(userId));
-		if (subState) {
-			DatesUsers.update({date_id: dateId, user_id: userId}, {date_id: dateId, user_id: userId}, {upsert: true});
+		var user = Users.findOne({email: email});
+		if (user) {
+			DatesUsers.update({date_id: dateId, user_id: user._id}, {date_id: dateId, user_id: user._id, state:subState}, {upsert: true});
+			return true;
 		} else {
-			DatesUsers.remove({date_id: dateId, user_id: userId});
+			return false;
 		}
+		//} else {
+		//	DatesUsers.remove({date_id: dateId, user_id: userId});
+		//}
 
 	},
 	createDate: function(location, date) {

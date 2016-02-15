@@ -33,8 +33,8 @@
                         <span class="input__label-content">Name oder E-Mail eingeben</span>
                 </label>
                 </span>
-                <button class="subscribe-button"><span>Ich kicke mit!</span></button>
-                <button class="unsubscribe-button"><span>Ohne mich!</span></button>
+                <button class="subscribe-button"><span class="subscribe-button-text">Ich kicke mit!</span></button>
+                <button class="unsubscribe-button"><span class="unsubscribe-button-text">Ohne mich!</span></button>
             </div>
         </form>
 	<ul class="subscriber-list">
@@ -42,7 +42,7 @@
             <li>{{email}}</li>
 		{{/each}}
         </ul>
-        <p><span class="highlight-subscribed">Diese {{numSubscribers}} Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">3 Spieler </span>können leider nicht).</p>
+        <p><span class="highlight-subscribed">Diese {{numSubscribers true}} Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">{{numSubscribers false}} Spieler </span>können leider nicht).</p>
 
     </div>
 </template>

@@ -39,7 +39,6 @@
         transition: transform 0.15s ease-in-out, fill 0.15s ease-in-out; //filter 0.2s ease-in-out;
         &:hover {
             fill: $bad-colour;
-            /*filter: drop-shadow( 6px 6px 6px #555);*/
         }
     }
 

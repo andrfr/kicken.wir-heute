@@ -1,5 +1,5 @@
 <template name="main">
-<!---USER-ACCOUNT-START-->
+    <!---USER-ACCOUNT-START-->
     <div class="user-account is-hidden">
         <span class="user-account__welcome">Hey {{username}}!</span>
         <div class="user-account__option user-account__option--balance">
@@ -25,14 +25,13 @@
                 </i>
         </div>
     </div>
+    <div class="user-account__overlay"></div>
+    
     <div class="user-account__menu user-account__menu--add-player">
-        
+        <p></p>
     </div>
     <!---USER-ACCOUNT-END-->
-
-
-	{{> yield}}
-
+    {{> yield}}
     <script>
     (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
@@ -66,6 +65,14 @@
                 classie.remove(ev.target.parentNode, 'input--filled');
             }
         }
+
+        document.querySelector(".user-account__option--add-player").addEventListener("click", function() {
+            classie.toggleClass(document.querySelector(".user-account__menu--add-player"), 'is-visible');
+            classie.toggleClass(document.querySelector(".user-account__option--add-player"), 'is-active');
+            classie.toggleClass(document.querySelector(".user-account__overlay"), 'is-active');
+            console.log('clik');
+        });
+
     })();
     </script>
 </template>

@@ -6,6 +6,7 @@ body {
 	font-weight: 400;
 	color: $base-colour;
 	font-size: 20px;
+	overflow-x: hidden;
 	
 	@media (max-width: 1444px) {font-size: 18px}
 	@media (max-width: 768px) {font-size: 16px}

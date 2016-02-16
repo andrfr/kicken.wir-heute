@@ -37,7 +37,7 @@ Template.admin.events({
 	event.preventDefault();
 	var location = event.target.location.value,
 	year = event.target.year.value,
-	month = event.target.month.value,
+	month = event.target.month.value - 1,
 	day = event.target.day.value,
 	hour = event.target.hour.value,
 	minute = event.target.minute.value,

@@ -40,11 +40,31 @@ Template.date.helpers({
 			state: subState
 		}, {
 			fields: {
-				'user_id': 1
-			}
+			'user_id': 1
+		}
 		}).count();
+		//console.log("numSubs" + countSubscribers(subState));
+		//return countSubscribers(subState);
 	},
-	datestate: "Nein, leider nicht!",
+	datestate: function() {
+		var subs = DatesUsers.find({
+			date_id: this._id,
+			state: true
+		}, {
+			fields: {
+			'user_id': 1
+		}
+		}).count();
+		if (subs < 6) {
+			if (new Date() > this.date - 3600000) {
+				return	"Nein, leider nicht!";
+			} else {
+				return "Möglicherscheiße";
+			}
+		} else {
+			return "Jawöllchen";
+		}
+	},
 	datestateClass: "no",
 	isSubscripted: false,
 	userbalance: "3€",

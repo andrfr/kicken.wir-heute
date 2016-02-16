@@ -1,5 +1,9 @@
 Router.configure({
-	layoutTemplate: 'main'
+	layoutTemplate: 'mainLayout'
+});
+
+Router.configure({
+	layoutTemplate: 'adminLayout'
 });
 Router.route('/', function() {
 	var dates = Dates.find({}, {sort: {date: 1}}).fetch(),
@@ -21,6 +25,7 @@ Router.route('/', function() {
 	}
 });
 Router.route('/date/:_id', {
+	layoutTemplate: 'mainLayout',
 	template: 'date',
 	data: function() {
 		//var dateSubscribers = Users.find({_id: {$in: currentDate.subscribers}});
@@ -28,5 +33,8 @@ Router.route('/date/:_id', {
 		return Dates.findOne({_id: this.params._id});	
 	}
 });
-Router.route('admin');
+Router.route('/admin', {
+	layoutTemplate: 'adminLayout',
+	template: 'admin'
+});
 Router.route('nope');

@@ -29,20 +29,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     button {
-        transition: color 0.3s;
-        background-color: none;
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: inherit;
-            z-index: -1;
-            transform: scale3d(1, 1, 1);
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
+        width: 25%;
         &.unsubscribe-button {
             &::before {
                 box-shadow: inset 0 0 0 2em $bad-colour;
@@ -73,6 +60,14 @@
         &:last-child {
             float: none;
         }
+        &.undo {
+            width: 50%;
+            float: none;
+        }
+
+        &.is-hidden {
+            display: none;
+        }
         @media (max-width: 1060px) {
             width: 50%;
         }
@@ -96,6 +91,10 @@
 }
 
 .input__field--subscriber-form {
+    &:disabled {
+        background-color: #ddd;
+        color: white;
+    }
     @media (max-width: 1060px) {
         padding-left: 2.72222em;
     }
@@ -138,3 +137,4 @@
 .highlight-unsubscribed {
     color: $bad-colour;
 }
+

@@ -69,8 +69,9 @@ Template.date.events({
 				classie.add(document.querySelector(".user-account"), 'is-hidden');
 
 				document.getElementById('subscriber-email').disabled = true;
-				document.getElementById('subscriber-email').style = 'background: #ddd; color: white;';
-				document.getElementsByClassName('unsubscribe-button')[0].style = 'display: none';
+				classie.add(document.querySelector(".unsubscribe-button"), 'is-hidden');
+				classie.add(document.querySelector(".subscribe-button"), 'undo');
+
 				document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'Oder, ne, doch!';
 			}
 		});
@@ -84,9 +85,10 @@ Template.date.events({
 				classie.add(document.querySelector(".user-account"), 'is-visible');
 
 				document.getElementById('subscriber-email').disabled = true;
-				document.getElementById('subscriber-email').style = 'background: #ddd; color: white;';
-				document.getElementsByClassName('subscribe-button')[0].style = 'display: none';
-				document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Halt,ne doch nicht!';
+				classie.add(document.querySelector(".unsubscribe-button"), 'undo');
+				classie.add(document.querySelector(".subscribe-button"), 'is-hidden');
+
+				document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Halt, ne doch nicht!';
 			}
 		});
 

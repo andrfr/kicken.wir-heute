@@ -33,6 +33,8 @@ h1 {
 }
 
 button {
+    height: 100%;
+    width: auto;
     font-weight: 400;
     border-radius: 0px;
     border: none;
@@ -41,21 +43,38 @@ button {
     float: left;
     cursor: pointer;
     font-size: 1.25em;
-    height: 100%;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    width: 25%;
     height: 3.2em;
     color: white;
-
+    transition: color 0.3s;
+    background-color: none;
+    position: relative;
+    z-index: 0;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        z-index: -1;
+        transform: scale3d(1, 1, 1);
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
     &:focus {
         outline: none;
     }
-    &span {
-        vertical-align: middle;
+    &::before {
+        box-shadow: inset 0 0 0 2em $bad-colour;
     }
-    position: relative;
-    z-index: 0;
+    &:hover {
+        color: $bad-colour;
+        &::before {
+            box-shadow: inset 0 0 0 0.25em $bad-colour;
+        }
+    }
 }
 
 input:focus {

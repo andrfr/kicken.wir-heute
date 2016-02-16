@@ -1,6 +1,4 @@
-.big-input {
-
-}
+.big-input {}
 
 .date-state {
     font-weight: 700;
@@ -64,7 +62,6 @@
             width: 50%;
             float: none;
         }
-
         &.is-hidden {
             display: none;
         }
@@ -92,8 +89,16 @@
 
 .input__field--subscriber-form {
     &:disabled {
-        background-color: #ddd;
+        background-color: #ccc;
         color: white;
+
+        .icon-user {
+            display: none;
+        }
+
+        .icon-add-user {
+            display: block;
+        }
     }
     @media (max-width: 1060px) {
         padding-left: 2.72222em;
@@ -109,6 +114,14 @@
     height: 100%;
     padding: 0.3em;
     fill: #fff;
+}
+
+.icon-add-user {
+    width: 100%;
+    height: 100%;
+    padding: 0.3em;
+    fill: #ff;
+    display: none;
 }
 
 .subscriber-list {
@@ -137,4 +150,3 @@
 .highlight-unsubscribed {
     color: $bad-colour;
 }
-

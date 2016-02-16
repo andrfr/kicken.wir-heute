@@ -25,6 +25,7 @@ Meteor.methods({
 	},
 	deleteUser: function (userId) {
 	    Users.remove(userId);
+	    DatesUsers.remove({user_id: userId});
 	  },
 	  deleteDate: function (dateId) {
 	    Dates.remove(dateId);

@@ -17,7 +17,7 @@
                     </svg>
                 </i>
         </div>
-        <div class="user-account__option user-account__option--add-player">
+        <div class="user-account__option user-account__option--new-player">
             <i class="icon">
                     <svg version="1.1" class="svg-icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
                                 <path d="M50 45.1c7.2 0 13-5.8 13-12.9 0-7.2-5.8-13-13-13 -7.2 0-12.9 5.8-12.9 13C37.1 39.3 42.8 45.1 50 45.1zM50 49c-10.1 0-18.3 8.2-18.3 18.3v13.5h36.7V67.3C68.3 57.2 60.1 49 50 49z"/>
@@ -26,9 +26,32 @@
         </div>
     </div>
     <div class="user-account__overlay"></div>
-    
-    <div class="user-account__menu user-account__menu--add-player">
-        <p></p>
+    <div class="user-account__menu user-account__menu--new-player">
+        <p>Du hast einen Freund oder Kollegen, der auch gern öfters mitkicken würde? Dann kannst du hier Name und E-Mail-Adresse eingeben, damit er ab sofort gelistet ist und sich an- und abmelden kann, sowie die E-Mails dieser App erhält.</p>
+        <form class="new-player-form">
+            <span class="input input--user-account__menu">
+                <input type="text" name="new-player-firstname" id="new-player-firstname" class="input__field input__field--user-account__menu"/>
+                <label class="input__label input__label--user-account__menu" for="new-player-firstname">
+                    
+                    <span class="input__label-content input__label-content--user-account__menu">Vorname</span>
+                </label>
+            </span>
+            <span class="input input--user-account__menu">
+                <input type="text" name="new-player-lastname" id="new-player-lastname" class="input__field input__field--user-account__menu"/>
+                <label class="input__label input__label--user-account__menu" for="new-player-lastname">
+                    
+                    <span class="input__label-content input__label-content--user-account__menu">Nachname</span>
+                </label>
+            </span>
+            <span class="input input--user-account__menu">
+                <input type="text" name="new-player-email" id="new-player-email" class="input__field input__field--user-account__menu"/>
+                <label class="input__label input__label--user-account__menu" for="new-player-email">
+                    
+                    <span class="input__label-content input__label-content--user-account__menu">E-Mail-Adresse</span>
+                </label>
+            </span>
+            <button class="add-new-player-button"><span class="add-new-player-button-text">Spieler registrieren!</span></button>
+        </form>
     </div>
     <!---USER-ACCOUNT-END-->
     {{> yield}}
@@ -66,9 +89,9 @@
             }
         }
 
-        document.querySelector(".user-account__option--add-player").addEventListener("click", function() {
-            classie.toggleClass(document.querySelector(".user-account__menu--add-player"), 'is-visible');
-            classie.toggleClass(document.querySelector(".user-account__option--add-player"), 'is-active');
+        document.querySelector(".user-account__option--new-player").addEventListener("click", function() {
+            classie.toggleClass(document.querySelector(".user-account__menu--new-player"), 'is-visible');
+            classie.toggleClass(document.querySelector(".user-account__option--new-player"), 'is-active');
             classie.toggleClass(document.querySelector(".user-account__overlay"), 'is-active');
             console.log('clik');
         });

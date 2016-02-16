@@ -91,7 +91,7 @@ Template.date.events({
 		});
 
 	},
-	"click .user-account__option--add-player": function(event, template) {
-		classie.add(document.querySelector(".user-account__menu--add-player"), 'is-visible');
+	"click .user-account__option--new-player": function(event, template) {
+		classie.add(document.querySelector(".user-account__menu--new-player"), 'is-visible');
 	}
 });

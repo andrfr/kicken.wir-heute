@@ -2,7 +2,7 @@
     $user-account-width: 25em;
     $user-account-option-size: 3em;
     .user-account {
-        z-index: auto;
+        z-index: 2;
         position: absolute;
         top: 0;
         right: 0;
@@ -78,7 +78,7 @@
             color: $good-colour;
             transition: transform 0.3s ease-in-out;
         }
-        &--add-player::after {
+        &--new-player::after {
             left: 0.2em + 3*$user-account-option-size;
             content: 'Spieler einladen';
         }
@@ -90,7 +90,7 @@
             left: $user-account-option-size;
             content: 'Kontostand ansehen';
         }
-        &--add-player,
+        &--new-player,
         &--add-date,
         &--balance {
             &:hover,
@@ -113,6 +113,7 @@
     
     //--------USER-ACCOUNT-MENU--------------------
     .user-account__menu {
+        padding: 1.5em;
         width: $user-account-width;
         height: calc(100% - 3em);
         position: absolute;
@@ -125,10 +126,17 @@
         float: right;
         display: inline-block;
         overflow: visible;
-        &--add-player {
+        &--new-player {
             &.is-visible {
                 transform: translate3d(0, 0, 0);
             }
+        }
+        p {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            font-size: 0.9em;
+            line-height: 1.5em;
+            margin-bottom: 1.5em;
         }
     }
     
@@ -145,6 +153,15 @@
         opacity: 0;
         pointer-events: none;
         &.is-active {
-            opacity: 0.8;
+            opacity: 0.65;
         }
+    }
+    
+    .input--user-account__menu {
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
+
+    .input__label-content--user-account__menu {
+        transform: translate3d(0.5em,0,0);
     }

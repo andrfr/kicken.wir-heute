@@ -1,12 +1,5 @@
 .big-input {
-    font-weight: 400;
-    font-size: 1.7em;
-    border-radius: 0px;
-    border: none;
-    font-family: $basefont;
-    display: block;
-    float: left;
-    cursor: pointer;
+
 }
 
 .date-state {
@@ -36,14 +29,6 @@
     margin: 0 auto;
     box-sizing: border-box;
     button {
-        @extend .big-input;
-        font-size: 1.25em;
-        height: 100%;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        width: 25%;
-        height: 3.2em;
-        color: white;
         transition: color 0.3s;
         background-color: none;
         &::before {
@@ -103,91 +88,21 @@
 
 /*--------Inputfields for subscriber Form-----*/
 
-.input {
-    z-index: 1;
-    vertical-align: top;
-    background: #fff;
+.input--subscriber-form {
     width: 50%;
-    float: left;
-    height: 4em;
     @media (max-width: 1060px) {
         width: 100%
     }
 }
 
-.input__field {
-    position: relative;
-    display: block;
-    float: right;
-    border: none;
-    border-radius: 0;
-    font-size: 1.8em;
-    font-weight: 300;
-    font-family: $basefont;
-    width: 100%;
-    background: transparent;
-    color: #6a7989;
-    height: 100%;
-    padding: 0 0 0 0.5em;
+.input__field--subscriber-form {
     @media (max-width: 1060px) {
         padding-left: 2.72222em;
     }
 }
 
-.input__label {
-    display: inline-block;
-    float: right;
-    user-select: none;
-    position: absolute;
-    text-align: left;
-    pointer-events: none;
-    color: #D2D2D2;
-}
-
-.input__label-content {
-    //equals placeholder text for inputfield, will be animated when focusing input
-    position: relative;
-    font-size: 1.8em;
-    font-weight: 300;
-    display: block;
-    float: left;
-    width: auto;
+.input__label-content--subscriber-form {
     transform: translate3d(-1.5em, 0, 0);
-    transition: transform 0.3s, opacity 0.3s;
-    line-height: 2.2222em;
-}
-
-.icon__subscriber-email {
-    display: inline-block;
-    transform: translate3d(-2em, 0, 0) scale3d(0, 1, 1);
-    width: 4em;
-    height: 4em;
-    background-color: #5B7A7F;
-    transition: background-color 0.3s, transform 0.3s;
-    float: left;
-}
-
-.input__field:focus + .input__label .input__label-content,
-.input--filled .input__label-content {
-    //moves placeholder-text to the right and fades out
-    opacity: 0;
-    transform: translate3d(2em, 0, 0);
-}
-
-.input__label-content,
-.icon,
-.input__field:focus + .input__label .input__label-content,
-.input--filled .input__label-content {
-    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-}
-
-.input__field:focus + .input__label .icon,
-.input--filled .icon {
-    background-color: $good-colour;
-    transform: translate3d(-4em, 0, 0) scale3d(1, 1, 1);
-    @media (max-width: 1060px) {
-        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-    }
 }
 
 .icon-user {

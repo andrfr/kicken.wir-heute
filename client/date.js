@@ -81,39 +81,43 @@ Template.date.helpers({
 });
 
 Template.date.events({
-	"click .unsubscribe-button": function(event, template) {
-		event.preventDefault();
-		Meteor.call('setSubscription', this._id, template.find('#subscriber-email').value, false, function(error, result) {
-			if (result) {
-				classie.remove(document.querySelector(".user-account"), 'is-visible');
-				classie.add(document.querySelector(".user-account"), 'is-hidden');
+    "click .unsubscribe-button": function(event, template) {
+        event.preventDefault();
+        Meteor.call('setSubscription', this._id, template.find('#subscriber-email').value, false, function(error, result) {
+            if (result) {
+                classie.remove(document.querySelector(".user-account"), 'is-visible');
+                classie.add(document.querySelector(".user-account"), 'is-hidden');
 
-				document.getElementById('subscriber-email').disabled = true;
-				classie.add(document.querySelector(".unsubscribe-button"), 'is-hidden');
-				classie.add(document.querySelector(".subscribe-button"), 'undo');
+                document.getElementById('subscriber-email').disabled = true;
+                document.getElementById('subscriber-email').value = '... will leider nicht mitkicken!';
+                classie.add(document.querySelector(".unsubscribe-button"), 'is-hidden');
+                classie.add(document.querySelector(".subscribe-button"), 'undo');
 
-				document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'Oder, ne, doch!';
-			}
-		});
-	},
-	"click .subscribe-button": function(event, template) {
-		event.preventDefault();
+                document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'Oder, ne, doch!';
+            }
+        });
+    },
+    "click .subscribe-button": function(event, template) {
+        event.preventDefault();
 
-		Meteor.call('setSubscription', this._id, template.find('#subscriber-email').value, true, function(error, result) {
-			if (result) {
-				classie.remove(document.querySelector(".user-account"), 'is-hidden');
-				classie.add(document.querySelector(".user-account"), 'is-visible');
+        Meteor.call('setSubscription', this._id, template.find('#subscriber-email').value, true, function(error, result) {
+            if (result) {
+                classie.remove(document.querySelector(".user-account"), 'is-hidden');
+                classie.add(document.querySelector(".user-account"), 'is-visible');
+            	
+            	//console.log(Users.findOne({_id: Session.get("currentUser")}).email);
+                
+                document.getElementById('subscriber-email').disabled = true;
+                document.getElementById('subscriber-email').value = '... ist volle Kanne dabei!';
+                classie.add(document.querySelector(".unsubscribe-button"), 'undo');
+                classie.add(document.querySelector(".subscribe-button"), 'is-hidden');
 
-				document.getElementById('subscriber-email').disabled = true;
-				classie.add(document.querySelector(".unsubscribe-button"), 'undo');
-				classie.add(document.querySelector(".subscribe-button"), 'is-hidden');
+                document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Halt, ne doch nicht!';
+            }
+        });
 
-				document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Halt, ne doch nicht!';
-			}
-		});
-
-	},
-	"click .user-account__option--new-player": function(event, template) {
-		classie.add(document.querySelector(".user-account__menu--new-player"), 'is-visible');
-	}
+    },
+    "click .user-account__option--new-player": function(event, template) {
+        classie.add(document.querySelector(".user-account__menu--new-player"), 'is-visible');
+    }
 });

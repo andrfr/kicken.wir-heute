@@ -9,25 +9,24 @@
         <h1>Termin erstellen</h1>
         <div class="content">
             <form class="createDate">
-                <input class="input__field--admin" type="text" name="location" placeholder="location" />
-                <input class="input__field--admin" type="text" name="day" placeholder="day" />
-                <input class="input__field--admin" type="text" name="month" placeholder="month" />
-                <input class="input__field--admin" type="text" name="year" placeholder="year" />
-                <input class="input__field--admin" type="text" name="hour" placeholder="hour" />
-                <input class="input__field--admin" type="text" name="minute" placeholder="minute" />
-                <input type="submit" />
+                <input class="input__field--admin" type="text" name="location" placeholder="Ort" />
+                <input class="input__field--admin datepicker" type="text" name="date" placeholder="Datum"/>
+                <input class="input__field--admin timepicker" type="text" name="time" placeholder="Uhrzeit"/>
+
+                <input class="input__field--admin" type="submit" value="Termin Erstellen" />
             </form>
         </div>
         <h1>Alle User: </h1>
         <div class="content">
             <ul>
-                {{#each users}} {{> user}} {{/each}}
+                {{#each users}} {{> userListElement}} {{/each}}
             </ul>
         </div>
         <h1>User erstellen</h1>
         <div class="content">
             <form class="createUser">
-                <input type="text" name="email" placeholder="email" />
+                <input type="text" name="email" placeholder="Name" class="input__field--admin"/>
+                <input class="input__field--admin" type="submit" value="User Erstellen" />
             </form>
         </div>
     </div>
@@ -35,11 +34,11 @@
 <template name="dateListElement">
     <li>{{location}}: {{formatDate date}}
         <a class="link-to-date" href='/date/{{_id}}'><img src="link.svg" alt="Link"></a>
-        <button class="deleteDate">&times;</button>
+        <button class="deleteDate input__field--admin">&times;</button>
     </li>
 </template>
-<template name="user">
+<template name="userListElement">
     <li>{{email}}
-        <button class="deleteUser">&times;</button>
+        <button class="deleteUser input__field--admin">&times;</button>
     </li>
 </template>

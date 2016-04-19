@@ -100,13 +100,13 @@ Template.date.helpers({
 Template.date.events({
     "click .unsubscribe-button": function(event, template) {
         event.preventDefault();
-		var user = template.find('#subscriber-email').value;
+		var user = Session.get('loggedInUser') || template.find('#subscriber-email').value;
         Meteor.call('setSubscription', this._id, user, false, function(error, result) {
             if (result) {
 				Session.set('loggedInUser', user);
                 
                 document.getElementById('subscriber-email').disabled = true;
-                //document.getElementById('subscriber-email').value = '... will leider nicht mitkicken!';
+                document.getElementById('subscriber-email').value = user + ' will leider nicht mitkicken!';
                 classie.add(document.querySelector(".unsubscribe-button"), 'is-hidden');
                 classie.add(document.querySelector(".subscribe-button"), 'undo');
                 classie.remove(document.querySelector(".subscribe-button"), 'is-hidden');
@@ -117,7 +117,7 @@ Template.date.events({
     },
     "click .subscribe-button": function(event, template) {
         event.preventDefault();
-		var user = template.find('#subscriber-email').value;
+		var user = Session.get('loggedInUser') || template.find('#subscriber-email').value;
         Meteor.call('setSubscription', this._id, user, true, function(error, result) {
             if (result) {
 				Session.set('loggedInUser', user); 
@@ -125,7 +125,7 @@ Template.date.events({
             	//console.log(Users.findOne({_id: Session.get("currentUser")}).email);
                 
                 document.getElementById('subscriber-email').disabled = true;
-                //document.getElementById('subscriber-email').value = '... ist volle Kanne dabei!';
+                document.getElementById('subscriber-email').value = user + ' ist volle Kanne dabei!';
                 classie.add(document.querySelector(".unsubscribe-button"), 'undo');
                 classie.remove(document.querySelector(".unsubscribe-button"), 'is-hidden');
                 classie.add(document.querySelector(".subscribe-button"), 'is-hidden');

@@ -5,7 +5,7 @@
 	height: 100%;
 
 	.content {
-		padding: 2em;
+		//padding: 2em;
 	}
 
 	h1 {
@@ -27,15 +27,50 @@
 		width: 31%;
 	}
 
-	.link-to-date {
-		width: 3em;
+
+	li {
+		font-size: 1em;
+		line-height: 3em;
+		span {
+			width: 70%;
+			margin-left: 1em;
+		}
+
 		height: 3em;
-		padding: 0.5em;
-		display: inline-block;
-		background-color: $good-colour;
+		width: 100%;
+		background-color: #eaeaea;
+
+		&:nth-child(2n) {
+			background-color: #fff;
+		}
+	}
+}
+
+.btn__admin-action {
+	width: 2em;
+	height: 2em;
+	float: right;
+	font-size: 1em;
+	border: none;
+	display: inline-block;
+	text-align: center;
+	border-radius: 50%;
+
+	img {
+		width: 1.2em;
+		vertical-align: middle;
+	}
+
+	&.link-to-date {
+		background-color: #abb;
+	}
+
+	&.deleteDate {
+		background-color: $bad-colour;
 
 		img {
-			color: white;
+			width: 1em;
+			vertical-align: middle;
 		}
 	}
 }

@@ -18,7 +18,7 @@
                 <input type="submit" />
             </form>
         </div>
-        <h1>Alle User: </h1>
+        <h1>Alle User</h1>
         <div class="content">
             <ul>
                 {{#each users}} {{> user}} {{/each}}
@@ -33,13 +33,13 @@
     </div>
 </template>
 <template name="dateListElement">
-    <li>{{location}}: {{formatDate date}}
-        <a class="link-to-date" href='/date/{{_id}}'><img src="link.svg" alt="Link"></a>
-        <button class="deleteDate">&times;</button>
+    <li><span>{{location}}: {{formatDate date}}</span>
+        <button class="deleteDate btn__admin-action"><img src="delete.svg" alt="Löschen"></button>
+        <a class="link-to-date btn__admin-action" href='/date/{{_id}}'><img src="link.svg" alt="Link"></a>
     </li>
 </template>
 <template name="user">
     <li>{{email}}
-        <button class="deleteUser">&times;</button>
+        <button class="deleteUser btn__admin-action">&times;</button>
     </li>
 </template>

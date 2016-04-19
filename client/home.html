@@ -1,0 +1,109 @@
+<template name="home">
+    <!---DATE-NAVIGATION-START-->
+    <div class="next-date">
+        <i class="arrow-right">
+            <svg version="1.1" class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.171 105.436" xml:space="preserve">  
+                        <path d="M57.172,52.691L12.392,0L0,10.453L36.979,52.84L0.313,94.953l12.387,10.482L57.172,52.691z"/>
+            </svg>
+        </i>
+    </div>
+    <div class="previous-date">
+        <i class="arrow-left">
+        <svg version="1.1" class="icon-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 57.171 105.436" xml:space="preserve">  
+                        <path d="M57.172,52.691L12.392,0L0,10.453L36.979,52.84L0.313,94.953l12.387,10.482L57.172,52.691z"/>
+            </svg>
+    </i>
+    </div>
+<!---DATE-NAVIGATION-END-->
+
+<!---USER-ACCOUNT-START-->
+    <div class="user-account is-hidden">
+        <span class="user-account__welcome">Hey {{username}}, was willst du machen?</span>
+        <div class="user-account__option user-account__option--balance">
+            <i class="icon">
+                    <svg version="1.1" class="svg-icon-euro-sign" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">  
+                        <path d="M62.1 32.8c1.5 0.4 3.1 1 4.8 1.8l3.6-8.6c-4-2-8.4-3-13-3 -6 0-11 1.7-15 5.2 -4 3.5-6.4 8.2-7.4 14.1H30.2v6.5h4.3l-0.1 2c0 1 0 1.7 0.1 2.3H30.2v6.6H35.3c1 5.8 3.5 10.3 7.4 13.6 3.9 3.3 8.9 4.9 14.9 4.9 4.4 0 8-0.7 10.8-2.2v-9.5c-3.3 1.4-6.6 2.1-10.2 2.1 -6.6 0-10.6-3-11.9-9H58.8v-6.6H45.7l-0.1-1.2v-1.7l0.1-1.3h15.4v-6.5H46.3c0.6-3.3 1.8-5.8 3.8-7.6 1.9-1.7 4.4-2.6 7.4-2.6C59.1 32.2 60.6 32.4 62.1 32.8z"/> 
+                    </svg>
+                </i>
+        </div>
+        <div class="user-account__option user-account__option--add-date">
+            <i class="icon">
+                    
+                </i>
+        </div>
+        <div class="user-account__option user-account__option--new-player">
+            <i class="icon">
+                    <svg version="1.1" class="svg-icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
+                                <path d="M50 45.1c7.2 0 13-5.8 13-12.9 0-7.2-5.8-13-13-13 -7.2 0-12.9 5.8-12.9 13C37.1 39.3 42.8 45.1 50 45.1zM50 49c-10.1 0-18.3 8.2-18.3 18.3v13.5h36.7V67.3C68.3 57.2 60.1 49 50 49z"/>
+                    </svg>
+                </i>
+        </div>
+    </div>
+
+    <!---USER-ACCOUNT-END-->
+
+
+
+    <div class="container">
+        <h1>Kicken wir <span>{{currentDate.dateInfo}}</span>?</h1>
+        <p class="date-state {{datestateClass}}">{{datestate}}</p>
+        <form class="subscriber-form">
+            <div class="subscriber-form__input-wrapper">
+                <span class="input">
+                    <input type="text" name="subscriber-email" id="subscriber-email" class="input__field"/>
+                    <label class="input__label" for="subscriber-email">
+                        <i class="icon icon__subscriber-email">
+                            <svg version="1.1" class="icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
+                                <path d="M50 45.1c7.2 0 13-5.8 13-12.9 0-7.2-5.8-13-13-13 -7.2 0-12.9 5.8-12.9 13C37.1 39.3 42.8 45.1 50 45.1zM50 49c-10.1 0-18.3 8.2-18.3 18.3v13.5h36.7V67.3C68.3 57.2 60.1 49 50 49z"/>
+                            </svg>
+                        </i>
+                        <span class="input__label-content">Name oder E-Mail eingeben</span>
+                </label>
+                </span>
+                <button class="subscribe-button kokihuna"><span>Ich kicke mit!</span></button>
+                <button class="unsubscribe-button kokihuna"><span>Ohne mich!</span></button>
+            </div>
+        </form>
+        <ul class="subscriber-list">
+            {{#each subscribers}}
+            <li>{{email}}</li> {{/each}}
+        </ul>
+        <p><span class="highlight-subscribed">Diese 7 Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">3 Spieler </span>können leider nicht).</p>
+    </div>
+    <script>
+    (function() {
+        // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        if (!String.prototype.trim) {
+            (function() {
+                // Make sure we trim BOM and NBSP
+                var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                String.prototype.trim = function() {
+                    return this.replace(rtrim, '');
+                };
+            })();
+        }
+
+        [].slice.call(document.querySelectorAll('#subscriber-email')).forEach(function(inputEl) {
+            // in case the input is already filled..
+            if (inputEl.value.trim() !== '') {
+                classie.add(inputEl.parentNode, 'input--filled');
+            }
+
+            // events:
+            inputEl.addEventListener('focus', onInputFocus);
+            inputEl.addEventListener('blur', onInputBlur);
+        });
+
+        function onInputFocus(ev) {
+            classie.add(ev.target.parentNode, 'input--filled');
+        }
+
+        function onInputBlur(ev) {
+            if (ev.target.value.trim() === '') {
+                classie.remove(ev.target.parentNode, 'input--filled');
+            }
+        }
+    })();
+    </script>
+</template>
+

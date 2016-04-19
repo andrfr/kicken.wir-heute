@@ -1,32 +1,40 @@
 <template name="admin">
-<div id="meta">
-	<p>Alle Termine: </p>
-	<ul>
-	{{#each dates}} {{> dateListElement}} {{/each}}
-	</ul>
-	<p>Termin erstellen</p>
-	<form class="createDate">
-		<input type="text" name="location" placeholder="location" />
-		<input type="text" name="day" placeholder="day" />
-		<input type="text" name="month" placeholder="month" />
-		<input type="text" name="year" placeholder="year" />
-		<input type="text" name="hour" placeholder="hour" />
-		<input type="text" name="minute" placeholder="minute" />
-		<input type="submit" />
-	</form>
-	<p>Alle User: </p>
-	<ul>
-	{{#each users}} {{> user}} {{/each}}
-	</ul>
-	<p>User erstellen</p>
-	<form class="createUser">
-	<input type="text" name="email" placeholder="email" />
-	</form>
-</div>
+    <div id="meta">
+        <h1>Alle Termine</h1>
+        <div class="content">
+            <ul>
+                {{#each dates}} {{> dateListElement}} {{/each}}
+            </ul>
+        </div>
+        <h1>Termin erstellen</h1>
+        <div class="content">
+            <form class="createDate">
+                <input class="input__field--admin" type="text" name="location" placeholder="location" />
+                <input class="input__field--admin" type="text" name="day" placeholder="day" />
+                <input class="input__field--admin" type="text" name="month" placeholder="month" />
+                <input class="input__field--admin" type="text" name="year" placeholder="year" />
+                <input class="input__field--admin" type="text" name="hour" placeholder="hour" />
+                <input class="input__field--admin" type="text" name="minute" placeholder="minute" />
+                <input type="submit" />
+            </form>
+        </div>
+        <h1>Alle User: </h1>
+        <div class="content">
+            <ul>
+                {{#each users}} {{> user}} {{/each}}
+            </ul>
+        </div>
+        <h1>User erstellen</h1>
+        <div class="content">
+            <form class="createUser">
+                <input type="text" name="email" placeholder="email" />
+            </form>
+        </div>
+    </div>
 </template>
 <template name="dateListElement">
-    <li>{{location}} : {{formatDate date}}
-	<a href='/date/{{_id}}'>link</a>
+    <li>{{location}}: {{formatDate date}}
+        <a class="link-to-date" href='/date/{{_id}}'><img src="link.svg" alt="Link"></a>
         <button class="deleteDate">&times;</button>
     </li>
 </template>
@@ -35,4 +43,3 @@
         <button class="deleteUser">&times;</button>
     </li>
 </template>
-

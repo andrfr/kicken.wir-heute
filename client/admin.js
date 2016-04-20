@@ -36,23 +36,30 @@ Template.admin.events({
 	// Prevent default browser form submit
 	event.preventDefault();
 	var location = event.target.location.value,
-	year = event.target.year.value,
-	month = event.target.month.value - 1,
-	day = event.target.day.value,
-	hour = event.target.hour.value,
-	minute = event.target.minute.value,
-	date = new Date(year, month, day, hour, minute);
+	//year = event.target.year.value,
+	//month = event.target.month.value - 1,
+	//day = event.target.day.value,
+	//hour = event.target.hour.value,
+	//minute = event.target.minute.value,
+	//date = new Date(year, month, day, hour, minute);
+
+	//time = new Date(event.target.time.value),
+	//date = new Date(event.target.date.value);
+	date = new Date(event.target.date.value + " " + event.target.time.value);
+
+	//date.setHours(time.getHours());
+	//date.setMinutes(time.getMinutes());
 
 	// Insert a date into the collection
 	Meteor.call("createDate", location, date);
 
 	// Clear form
-	event.target.location.value = "",
-	event.target.year.value = "",
-	event.target.month.value = "",
-	event.target.day.value = "",
-	event.target.hour.value = "",
-	event.target.minute.value = "";
+	event.target.location.value = "";
+	//event.target.year.value = "",
+	//event.target.month.value = "",
+	//event.target.day.value = "",
+	//event.target.hour.value = "",
+	//event.target.minute.value = "";
     },
     "submit .createUser": function (event) {
       // Prevent default browser form submit
@@ -69,13 +76,18 @@ Template.admin.events({
     }
 });
 
-Template.user.events({
+Template.admin.onRendered(function() {
+  $('.datepicker').pickadate();
+  $('.timepicker').pickatime();
+});
+
+Template.userListElement.events({
 	"click .deleteUser": function() {
 		Meteor.call("deleteUser", this._id);
 	}
 });
 
-Template.date.events({
+Template.dateListElement.events({
 	"click .deleteDate": function() {
 		Meteor.call("deleteDate", this._id);
 	},

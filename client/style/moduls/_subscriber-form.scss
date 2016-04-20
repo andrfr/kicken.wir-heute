@@ -150,3 +150,8 @@
 .highlight-unsubscribed {
     color: $bad-colour;
 }
+
+// ADDED BY FRITSCH
+.add-subscriber.is-hidden {
+  display: none;
+}

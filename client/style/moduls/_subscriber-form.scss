@@ -87,17 +87,20 @@
     }
 }
 
-.input__field--subscriber-form {
+#subscriber-email {
     &:disabled {
         background-color: #ccc;
         color: white;
-
-        .icon-user {
-            display: none;
+        & + label {
+            & .icon__subscriber-email {
+                transform: translate3d(-8em, 0, 0);
+                opacity: 0;
+            }
         }
-
-        .icon-add-user {
-            display: block;
+        & ~ .btn__add-user {
+            transform: translate3d(-4em, 0, 0);
+            opacity: 1;
+            background-color: $good-colour;
         }
     }
     @media (max-width: 1060px) {
@@ -107,6 +110,13 @@
 
 .input__label-content--subscriber-form {
     transform: translate3d(-1.5em, 0, 0);
+}
+
+.btn__add-user {
+    opacity: 0;
+    transform: translate3d(-8em, 0, 0);
+    cursor: pointer;
+    position: absolute;
 }
 
 .icon-user {
@@ -120,8 +130,7 @@
     width: 100%;
     height: 100%;
     padding: 0.3em;
-    fill: #ff;
-    display: none;
+    fill: #fff;
 }
 
 .subscriber-list {
@@ -151,7 +160,3 @@
     color: $bad-colour;
 }
 
-// ADDED BY FRITSCH
-.add-subscriber.is-hidden {
-  display: none;
-}

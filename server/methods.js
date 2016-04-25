@@ -1,9 +1,11 @@
 Meteor.methods({
-	setSubscription: function(dateId, email, subState) {
-		var user = Users.findOne({email: email});
+	setSubscription: function(dateId, inputText, subState) {
+		var user = Users.findOne({$or: [{fullname: inputText}, {email: inputText}]});
+		
 		if (user) {
 			DatesUsers.update({date_id: dateId, user_id: user._id}, {date_id: dateId, user_id: user._id, state:subState}, {upsert: true});
-			return true;
+			
+			return user;
 		} else {
 			return false;
 		}
@@ -18,8 +20,11 @@ Meteor.methods({
 			date:date,
 		});
 	},
-	createUser: function(email) {
+	createUser: function(prename, surname, email) {
 		Users.insert({
+		prename: prename,
+		surname: surname,
+		fullname: prename + " " + surname,
 		email: email
 	});
 	},

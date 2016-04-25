@@ -66,13 +66,17 @@ Template.admin.events({
       event.preventDefault();
 
       // Get value from form element
-      var text = event.target.email.value;
+      var prename_text = event.target.prename.value;
+      var surname_text = event.target.surname.value;
+      var email_text = event.target.email.value;
 
       // Insert a user into the collection
-      Meteor.call("createUser", text);
+      Meteor.call("createUser", prename_text, surname_text, email_text);
 
       // Clear form
       event.target.email.value = "";
+      event.target.prename.value = "";
+      event.target.surname.value = "";
     }
 });
 

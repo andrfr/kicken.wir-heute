@@ -1,5 +1,5 @@
 Template.mainLayout.helpers({
   username: function() {
-	return Session.get('loggedInUser');
+	return Session.get('loggedInUserDisplay');
   }
 });

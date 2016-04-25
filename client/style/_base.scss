@@ -145,13 +145,13 @@ input:focus {
     line-height: 2.2222em;
 }
 
-.icon__subscriber-email {
+.icon__subscriber-email, .btn__add-user {
     display: inline-block;
     transform: translate3d(-2em, 0, 0) scale3d(0, 1, 1);
     width: 4em;
     height: 4em;
     background-color: #5B7A7F;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
     float: left;
 }
 

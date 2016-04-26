@@ -85,6 +85,8 @@
     }
     .userlist {
         counter-reset: counter;
+        font-family: 'Open Sans', sans-serif;
+
 
         li:before {
             content: counter(counter)". ";
@@ -101,6 +103,8 @@
     
     .list__span--location {
         margin-left: 1em;
+        font-family: 'Open Sans', sans-serif;
+
     }
 
     .form__edit-user--input {
@@ -110,6 +114,8 @@
         background: transparent;
         padding: 0;
         margin: 0;
+        font-family: 'Open Sans', sans-serif;
+
 
         &:first-child {
             margin-left: 1em;

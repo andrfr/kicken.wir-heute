@@ -1,179 +1,238 @@
-body {
-    background: url(/bg-im-alten-loha.jpg);
-    background-size: 100% auto contain;
-    background-position: top;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 400;
-    color: $base-colour;
-    font-size: 20px;
-    overflow-x: hidden;
-    @media (max-width: 1444px) {
-        font-size: 18px
+    body {
+        background: url(/bg-im-alten-loha.jpg);
+        background-size: 100% auto contain;
+        background-position: top;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 400;
+        color: $base-colour;
+        font-size: 20px;
+        overflow-x: hidden;
+        @media (max-width: 1444px) {
+            font-size: 18px
+        }
+        @media (max-width: 768px) {
+            font-size: 16px
+        }
     }
-    @media (max-width: 768px) {
-        font-size: 16px
+    
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
     }
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}
-
-h1 {
-    font-size: 2.5em;
-    font-weight: 400;
-    span {
-        color: $bad-colour;
+    
+    h1 {
+        font-size: 2.5em;
+        font-weight: 400;
+        span {
+            color: $bad-colour;
+        }
+        @media (max-width: 768px) {
+            padding: 0 1.5em
+        }
     }
-    @media (max-width: 768px) {
-        padding: 0 1.5em
-    }
-}
-
-button {
+    
+    button {
         height: 100%;
         width: auto;
         cursor: pointer;
-    &.kokihuna {
-        //button style mit Hoveranimation "kokihuna"
-        font-weight: 400;
-        border-radius: 0px;
-        border: none;
-        font-family: $basefont;
-        display: block;
-        float: left;
-        font-size: 1.25em;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        height: 3.2em;
-        color: white;
-        transition: color 0.3s;
-        background-color: none;
-        position: relative;
-        z-index: 0;
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: inherit;
-            z-index: -1;
-            transform: scale3d(1, 1, 1);
-            transition: box-shadow 0.3s, transform 0.3s;
-        }
-        &:focus {
-            outline: none;
-        }
-        &::before {
-            box-shadow: inset 0 0 0 2em $bad-colour;
-        }
-        &:hover {
-            color: $bad-colour;
+        &.kokihuna {
+            //button style mit Hoveranimation "kokihuna"
+            font-weight: 400;
+            border-radius: 0px;
+            border: none;
+            font-family: $basefont;
+            display: block;
+            float: left;
+            font-size: 1.25em;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            height: 3.2em;
+            color: white;
+            transition: color 0.3s;
+            background-color: none;
+            position: relative;
+            z-index: 0;
             &::before {
-                box-shadow: inset 0 0 0 0.25em $bad-colour;
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+                z-index: -1;
+                transform: scale3d(1, 1, 1);
+                transition: box-shadow 0.3s, transform 0.3s;
+            }
+            &:focus {
+                outline: none;
+            }
+            &::before {
+                box-shadow: inset 0 0 0 2em $bad-colour;
+            }
+            &:hover {
+                color: $bad-colour;
+                &::before {
+                    box-shadow: inset 0 0 0 0.25em $bad-colour;
+                }
             }
         }
     }
-}
-
-input:focus {
-    outline: none;
-}
-
-.container {
-    width: 70%;
-    margin: 10em auto 0;
-    text-align: center;
-    height: 100%;
-    @media (max-width: 1444px) {
-        width: 77%
+    
+    input:focus {
+        outline: none;
     }
-    @media (max-width: 768px) {
-        width: 92%;
-        margin: 7em auto 0;
+    
+    .container {
+        width: 70%;
+        margin: 10em auto 0;
+        text-align: center;
+        height: 100%;
+        @media (max-width: 1444px) {
+            width: 77%
+        }
+        @media (max-width: 768px) {
+            width: 92%;
+            margin: 7em auto 0;
+        }
     }
-}
-
-//--------------inputs-------------------------------------
-.input {
-    z-index: 1;
-    vertical-align: top;
-    background: #fff;
-    float: left;
-    height: 4em;
-}
-
-.input__field {
-    position: relative;
-    display: block;
-    float: right;
-    border: none;
-    border-radius: 0;
-    font-size: 1.8em;
-    font-weight: 300;
-    font-family: $basefont;
-    width: 100%;
-    background: transparent;
-    color: #6a7989;
-    height: 100%;
-    padding: 0 0 0 0.5em;
-}
-
-.input__label {
-    display: inline-block;
-    float: right;
-    user-select: none;
-    position: absolute;
-    text-align: left;
-    pointer-events: none;
-    color: #D2D2D2;
-}
-
-.input__label-content {
-    //equals placeholder text for inputfield, will be animated when focusing input
-    position: relative;
-    font-size: 1.8em;
-    font-weight: 300;
-    display: block;
-    float: left;
-    width: auto;
-    transition: transform 0.3s, opacity 0.3s;
-    line-height: 2.2222em;
-}
-
-.icon__subscriber-email, .btn__add-user {
-    display: inline-block;
-    transform: translate3d(-2em, 0, 0) scale3d(0, 1, 1);
-    width: 4em;
-    height: 4em;
-    background-color: #5B7A7F;
-    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
-    float: left;
-}
-
-.input__field:focus + .input__label .input__label-content,
-.input--filled .input__label-content {
-    //moves placeholder-text to the right and fades out
-    opacity: 0;
-    transform: translate3d(2em, 0, 0);
-}
-
-.input__label-content,
-.icon,
-.input__field:focus + .input__label .input__label-content,
-.input--filled .input__label-content {
-    transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-}
-
-.input__field:focus + .input__label .icon,
-.input--filled .icon {
-    background-color: $good-colour;
-    transform: translate3d(-4em, 0, 0) scale3d(1, 1, 1);
-    @media (max-width: 1060px) {
-        transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    
+    //--------------inputs-------------------------------------
+    .input {
+        z-index: 1;
+        vertical-align: top;
+        background: #fff;
+        float: left;
+        height: 4em;
     }
-}
+    
+    .input__field {
+        position: relative;
+        display: block;
+        float: right;
+        border: none;
+        border-radius: 0;
+        font-size: 1.8em;
+        font-weight: 300;
+        font-family: $basefont;
+        width: 100%;
+        background: transparent;
+        color: #6a7989;
+        height: 100%;
+        padding: 0 0 0 0.5em;
+    }
+    
+    .input__label {
+        display: inline-block;
+        float: right;
+        user-select: none;
+        position: absolute;
+        text-align: left;
+        pointer-events: none;
+        color: #D2D2D2;
+    }
+    
+    .input__label-content {
+        //equals placeholder text for inputfield, will be animated when focusing input
+        position: relative;
+        font-size: 1.8em;
+        font-weight: 300;
+        display: block;
+        float: left;
+        width: auto;
+        transition: transform 0.3s, opacity 0.3s;
+        line-height: 2.2222em;
+    }
+    
+    .icon__subscriber-email,
+    .btn__add-user {
+        display: inline-block;
+        transform: translate3d(-2em, 0, 0) scale3d(0, 1, 1);
+        width: 4em;
+        height: 4em;
+        background-color: #5B7A7F;
+        transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+        float: left;
+    }
+    
+    .input__field:focus + .input__label .input__label-content,
+    .input--filled .input__label-content {
+        //moves placeholder-text to the right and fades out
+        opacity: 0;
+        transform: translate3d(2em, 0, 0);
+    }
+    
+    .input__label-content,
+    .icon,
+    .input__field:focus + .input__label .input__label-content,
+    .input--filled .input__label-content {
+        transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+    }
+    
+    .input__field:focus + .input__label .icon,
+    .input--filled .icon {
+        background-color: $good-colour;
+        transform: translate3d(-4em, 0, 0) scale3d(1, 1, 1);
+        @media (max-width: 1060px) {
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        }
+    }
+    
+    .info-screen {
+        position: absolute;
+        background-color: rgba(36, 80, 87, 0.65);
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        z-index: 50;
+        display: table;
+    }
+    
+    .info-screen__content {
+        padding: 2em;
+        width: 100%;
+        background: #245057;
+        position: relative;
+        margin: auto;
+        height: auto;
+        margin: auto auto;
+        vertical-align: middle;
+        display: inline-block;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        p {
+            font-family: 'Open Sans', sans-serif;
+            color: white;
+            margin-bottom: 1.5em;
+            line-height: 1.35em;
+            a {
+                text-decoration: none;
+                color: #57A8B5;
+            }
+        }
+        .info-screen__btn {
+            display: block;
+            margin: 0 auto;
+            padding: 0 2em;
+            float: none;
+        }
+    }
+    
+    h2 {
+        font-size: 2.5em;
+        color: white;
+        margin-bottom: 1em;
+        text-align: center;
+    }
+    
+    .center-hori {
+        height: 100%;
+        background: #245057;
+        width: 50%;
+        margin: auto;
+        display: table-cell;
+        vertical-align: middle;
+    }

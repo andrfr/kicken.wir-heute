@@ -89,18 +89,11 @@ Template.userListElement.events({
     "click .deleteUser": function() {
         Meteor.call("deleteUser", this._id);
     },
-    
     //Edit user
     "click .userlist__edit-user": function(event) {
     	console.log(event.currentTarget.firstChild.innerHTML);
 
         //Find User in List and delete inner HTML and replace with editable inputfields with user data
-    	var username  =  event.currentTarget.firstChild.innerHTML;
-    	
-    	Meteor.call('getUser', username, function(error, user){
-			console.log(user._id);
-			console.log(user.fullname);
-    	});
     	
 
         //update user and replace inputs with static text

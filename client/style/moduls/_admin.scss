@@ -98,21 +98,30 @@
             color: inherit;
         }
     }
-  
+    
+    .list__span--location {
+        margin-left: 1em;
+    }
 
     .form__edit-user--input {
         border: none;
         font-size: 1em;
-        width: 6em;
+        width: 8em;
         background: transparent;
+        padding: 0;
+        margin: 0;
+
+        &:first-child {
+            margin-left: 1em;
+        }
 
         &:nth-child(3n) {
-            width: 14em;
+            width: 16em;
             color: $good-colour;
         }
 
         &:nth-child(4n) {
-            width: 3em;
+            width: 1.5em;
             color: $bad-colour;
         }
     }

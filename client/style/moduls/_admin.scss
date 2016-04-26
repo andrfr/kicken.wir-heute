@@ -117,18 +117,3 @@
         margin-left: 0;
     }
 }
-
-.edit-user__layer {
-    visibility: hidden;
-    pointer-events: none;
-    height: 4em;
-    width: 70%;
-    background-color: $good-colour;
-    position: absolute;
-    margin: auto auto;
-
-    &.is-visible {
-        visibility: visible;
-        pointer-events: auto;
-    }
-}

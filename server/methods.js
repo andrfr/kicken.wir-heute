@@ -37,7 +37,7 @@ Meteor.methods({
         Dates.remove(dateId);
     },
     getUser: function(username) {
-        var user = User.findOne({ fullname: username });
+        var user = Users.findOne({ fullname: username });
         if (username) {
 
             return user

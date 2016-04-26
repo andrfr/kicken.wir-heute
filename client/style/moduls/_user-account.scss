@@ -80,7 +80,7 @@
         }
         &--new-player::after {
             left: 0.2em + 3*$user-account-option-size;
-            content: 'Spieler einladen';
+            content: 'Spieler registrieren';
         }
         &--add-date::after {
             left: 0.1em + 2*$user-account-option-size;

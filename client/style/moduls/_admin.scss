@@ -51,6 +51,9 @@
         &:nth-child(2n) {
             background-color: #fff;
         }
+        &:hover {
+            background-color: #D5EAED;
+        }
     }
     .btn__admin-action {
         width: 2em;
@@ -89,9 +92,43 @@
             margin-left: 1em;
             color: #444;
         }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
     }
-    .userlist__email {
+    .list__span {
+        margin: 0 0.5em;
+    }
+    .list__span--email {
         color: $good-colour;
+    }
+
+    .list__span--location {
+        margin-left: 1em;
+    }
+
+    .list__span--balance {
+        color: $bad-colour;
+    }
+
+    .list__span--fullname {
         margin-left: 0;
+    }
+}
+
+.edit-user__layer {
+    visibility: hidden;
+    pointer-events: none;
+    height: 4em;
+    width: 70%;
+    background-color: $good-colour;
+    position: absolute;
+    margin: auto auto;
+
+    &.is-visible {
+        visibility: visible;
+        pointer-events: auto;
     }
 }

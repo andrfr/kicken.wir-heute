@@ -1,4 +1,7 @@
 <template name="admin">
+    <div class="edit-user__layer">
+        
+    </div>
     <div id="meta">
         <h1>Alle Termine</h1>
         <div class="content">
@@ -27,13 +30,14 @@
                 <input type="text" name="prename" placeholder="Vorname" class="input__field--admin" />
                 <input type="text" name="surname" placeholder="Nachanme" class="input__field--admin" />
                 <input type="text" name="email" placeholder="E-Mail" class="input__field--admin" />
+                <input type="text" name="balance" placeholder="Kontonstand" class="input__field--admin" />
                 <input class="input__field--admin input__field--admin-submit" type="submit" value="User Erstellen" />
             </form>
         </div>
     </div>
 </template>
 <template name="dateListElement">
-    <li><span>{{location}}: {{formatDate date}}</span>
+    <li><span class="list__span--location">{{location}}: {{formatDate date}}</span>
         <button class="deleteDate btn__admin-action delete">
             <img src="delete.svg" alt="Löschen">
         </button>
@@ -43,7 +47,7 @@
     </li>
 </template>
 <template name="userListElement">
-    <li><span>{{fullname}} | </span><span class="userlist__email">{{email}}</span>
+    <li><a class="userlist__edit-user" href="#"><span class="list__span list__span--fullname">{{fullname}}</span>|<span class="list__span list__span--email">{{email}}</span>|<span class="list__span list__span--balance">{{balance}} &euro;</span></a>
         <button class="deleteUser btn__admin-action delete"><img src="delete.svg" alt="Löschen"></button>
     </li>
 </template>

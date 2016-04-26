@@ -74,17 +74,20 @@ Template.date.helpers({
 		}).count();
 		if (subs < 6) {
 			if (new Date() > this.date - 3600000) {
+				datestateClass: "no";
 				return	"Nein, leider nicht!";
 			} else {
-				return "Vielleicht";
+				datestateClass: "no";
+				return "Hm.. noch sind wir zu wenig!";
 			}
 		} else {
-			return "Jawoll";
+			datestateClass: "yes"
+			return "Jawollmann!";
 		}
 	},
 	datestateClass: "no",
 	isSubscripted: false,
-	userbalance: "3€",
+	
 	dates: function() {
 		return Dates.find({}, {
 			sort: {
@@ -151,5 +154,7 @@ Template.date.events({
       classie.remove(document.querySelector(".subscribe-button"), 'is-hidden');
 	  document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Ohne mich!';
 	  document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'Ich kicke mit!';
+
+	  document.getElementById("subscriber-email").focus();
 	}
 });

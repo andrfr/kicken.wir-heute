@@ -89,15 +89,32 @@ Template.userListElement.events({
     "click .deleteUser": function() {
         Meteor.call("deleteUser", this._id);
     },
+    
     //Edit user
     "click .userlist__edit-user": function(event) {
-    	console.log(event.currentTarget.firstChild.innerHTML);
 
         //Find User in List and delete inner HTML and replace with editable inputfields with user data
-    	
+
 
         //update user and replace inputs with static text
+    },
+
+    "focusout .edit-prename": function(event) {
+    	Meteor.call("editUserPrename", this._id, event.target.value)
+    },
+
+    "focusout .edit-surname": function(event) {
+    	Meteor.call("editUserSurname", this._id, event.target.value)
+    },
+
+    "focusout .edit-email": function(event) {
+    	Meteor.call("editUserEmail", this._id, event.target.value)
+    },
+
+     "focusout .edit-balance": function(event) {
+    	Meteor.call("editUserBalance", this._id, event.target.value)
     }
+
 });
 
 Template.dateListElement.events({

@@ -1,4 +1,5 @@
 <template name="admin">
+
     <div id="meta">
         <h1>Alle Termine</h1>
         <div class="content">
@@ -45,10 +46,11 @@
 </template>
 <template name="userListElement">
     <li>
-        <input type="text" name="prename" value="{{prename}}" class="input__field--admin form__edit-user--input edit-prename" />
-        <input type="text" name="surname" value="{{surname}}" class="input__field--admin form__edit-user--input edit-surname" />
-        <input type="email" name="email" value="{{email}}" class="input__field--admin form__edit-user--input edit-email" />
-        <input type="text" name="balance" value="{{balance}} &euro;" class="input__field--admin form__edit-user--input edit-balance" />
+
+    <<a class="userlist__edit-user" href="#"><span class="list__span list__span--fullname">{{fullname}}</span>|<span class="list__span list__span--email">{{email}}</span>|<span class="list__span list__span--balance">{{balance}} &euro;</span></a>
+    
+       
         <button class="deleteUser btn__admin-action delete"><img src="delete.svg" alt="Löschen"></button>
     </li>
+
 </template>

@@ -36,7 +36,24 @@ Meteor.methods({
     deleteDate: function(dateId) {
         Dates.remove(dateId);
     },
-    editUser: function(userId) {
+    editUserPrename: function(userId, inputText) {
+        var user = Users.findOne({ _id: userId });
 
+        Users.update({ _id: userId }, { $set: { prename: inputText } });
+    },
+    editUserSurname: function(userId, inputText) {
+        var user = Users.findOne({ _id: userId });
+
+        Users.update({ _id: userId }, { $set: { surname: inputText } });
+    },
+    editUserEmail: function(userId, inputText) {
+        var user = Users.findOne({ _id: userId });
+
+        Users.update({ _id: userId }, { $set: { email: inputText } });
+    },
+    editUserBalance: function(userId, inputText) {
+        var user = Users.findOne({ _id: userId });
+        
+        Users.update({ _id: userId }, { $set: { balance: inputText } });
     }
 });

@@ -36,15 +36,6 @@ Meteor.methods({
     deleteDate: function(dateId) {
         Dates.remove(dateId);
     },
-    getUser: function(username) {
-        var user = Users.findOne({ fullname: username });
-        if (username) {
-
-            return user
-        } else {
-            return false;
-        }
-    },
     editUser: function(userId) {
 
     }

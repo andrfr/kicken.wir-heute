@@ -188,18 +188,17 @@
         top: 0px;
         z-index: 50;
         display: table;
+        transition: transform 0.4s 0.2s ease-out, background-color 0.2s;
+        &.is-read {
+            transform: translate3d(0, -1000px, 0);
+            background-color: transparent;
+        }
     }
     
     .info-screen__content {
         padding: 2em;
-        width: 100%;
         background: #245057;
-        position: relative;
-        margin: auto;
-        height: auto;
-        margin: auto auto;
         vertical-align: middle;
-        display: inline-block;
         width: 50%;
         margin-left: auto;
         margin-right: auto;
@@ -219,6 +218,13 @@
             padding: 0 2em;
             float: none;
         }
+        @media (max-width: 1060px) {
+            width: 90%;
+        }
+        @media (max-width: 768px) {
+            width: 100%;
+            height: 100%;
+        }
     }
     
     h2 {
@@ -229,10 +235,6 @@
     }
     
     .center-hori {
-        height: 100%;
-        background: #245057;
-        width: 50%;
-        margin: auto;
         display: table-cell;
         vertical-align: middle;
     }

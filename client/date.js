@@ -63,6 +63,7 @@ Template.date.helpers({
 		//console.log("numSubs" + countSubscribers(subState));
 		//return countSubscribers(subState);
 	},
+	datestateClass: "no",
 	datestate: function() {
 		var subs = DatesUsers.find({
 			date_id: this._id,
@@ -74,18 +75,20 @@ Template.date.helpers({
 		}).count();
 		if (subs < 6) {
 			if (new Date() > this.date - 3600000) {
-				datestateClass: "no";
+				classie.add(document.querySelector(".date-state"), 'no');
+				classie.remove(document.querySelector(".date-state"), 'yes');
 				return	"Nein, leider nicht!";
 			} else {
-				datestateClass: "no";
+				classie.add(document.querySelector(".date-state"), 'no');
+				classie.remove(document.querySelector(".date-state"), 'yes');
 				return "Hm.. noch sind wir zu wenig!";
 			}
 		} else {
-			datestateClass: "yes"
+			classie.add(document.querySelector(".date-state"), 'yes');
+			classie.remove(document.querySelector(".date-state"), 'no');
 			return "Jawollmann!";
 		}
 	},
-	datestateClass: "no",
 	isSubscripted: false,
 	
 	dates: function() {
@@ -114,7 +117,7 @@ Template.date.events({
                 classie.add(document.querySelector(".subscribe-button"), 'undo');
                 classie.remove(document.querySelector(".subscribe-button"), 'is-hidden');
 
-                document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'Oder, ne, doch!';
+                document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'War nur Spaß - bin dabei!';
             }
         });
     },
@@ -134,7 +137,7 @@ Template.date.events({
                 classie.remove(document.querySelector(".unsubscribe-button"), 'is-hidden');
                 classie.add(document.querySelector(".subscribe-button"), 'is-hidden');
 
-                document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Halt, ne doch nicht!';
+                document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Ah, mist - Oma hat Geburstag!';
             }
         });
 

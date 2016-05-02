@@ -6,7 +6,8 @@
     text-transform: uppercase;
     color: white;
     &.no {
-        font-size: 5em;
+        font-size: 4.5em;
+        
     }
     &.yes {
         font-size: 6em;
@@ -14,7 +15,7 @@
     @media (max-width: 768px) {
         padding: 0.6em 1em;
         &.no {
-            font-size: 4em;
+            font-size: 3.5em;
         }
         &.yes {
             font-size: 5em;
@@ -61,6 +62,9 @@
         &.undo {
             width: 50%;
             float: none;
+            @media (max-width: 1060px) {
+                width: 100%;
+            }
         }
         &.is-hidden {
             display: none;
@@ -101,6 +105,10 @@
             transform: translate3d(-4em, 0, 0);
             opacity: 1;
             background-color: $good-colour;
+
+            @media (max-width: 1060px) {
+                transform: translate3d(0, 0, 0);
+            }
         }
     }
     @media (max-width: 1060px) {
@@ -159,4 +167,3 @@
 .highlight-unsubscribed {
     color: $bad-colour;
 }
-

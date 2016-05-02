@@ -87,7 +87,7 @@
             })();
         }
 
-        [].slice.call(document.querySelectorAll('#subscriber-email')).forEach(function(inputEl) {
+        [].slice.call(document.querySelectorAll('#subscriber-email, .input__field--user-account__menu')).forEach(function(inputEl) {
             // in case the input is already filled..
             if (inputEl.value.trim() !== '') {
                 classie.add(inputEl.parentNode, 'input--filled');
@@ -112,7 +112,10 @@
             classie.toggleClass(document.querySelector(".user-account__menu--new-player"), 'is-visible');
             classie.toggleClass(document.querySelector(".user-account__option--new-player"), 'is-active');
             classie.toggleClass(document.querySelector(".user-account__overlay"), 'is-active');
-            console.log('clik');
+        });
+
+        document.querySelector('.info-screen__btn').addEventListener('click', function(){
+            classie.addClass(document.querySelector('.info-screen'), 'is-read');
         });
 
     })();

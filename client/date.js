@@ -63,7 +63,6 @@ Template.date.helpers({
 		//console.log("numSubs" + countSubscribers(subState));
 		//return countSubscribers(subState);
 	},
-	datestateClass: "no",
 	datestate: function() {
 		var subs = DatesUsers.find({
 			date_id: this._id,
@@ -75,18 +74,12 @@ Template.date.helpers({
 		}).count();
 		if (subs < 6) {
 			if (new Date() > this.date - 3600000) {
-				classie.add(document.querySelector(".date-state"), 'no');
-				classie.remove(document.querySelector(".date-state"), 'yes');
 				return	"Nein, leider nicht!";
 			} else {
-				classie.add(document.querySelector(".date-state"), 'no');
-				classie.remove(document.querySelector(".date-state"), 'yes');
 				return "Hm.. noch sind wir zu wenig!";
 			}
 		} else {
-			classie.add(document.querySelector(".date-state"), 'yes');
-			classie.remove(document.querySelector(".date-state"), 'no');
-			return "Jawollmann!";
+			return "Ja, voll geil man!";
 		}
 	},
 	isSubscripted: false,

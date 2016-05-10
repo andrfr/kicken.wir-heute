@@ -1,23 +1,17 @@
 <template name="mainLayout">
-   
     <div class="info-screen">
         <div class="center-hori">
-        <div class="info-screen__content">
-            <h2>Ein paar kleine Hinweise</h2>
-            <p>Wenn ihr bereits registriert seid, könnt ihr euch mit der Kombination eures Vor- und Nachnamens anmelden (z.B. Hermann Müller). Für alle die nicht registiert sind: Mail an</p>
-            
-            <p><a href="mailto:kicken@wir-heute.de">kicken@wir-heute.de</a></p>
-
-            <p>Alternativ können alle bereits registrierte Spieler auch andere Spieler registrieren. Sobald ihr euch für einen Termin an- oder abmeldet seid ihr auch bei der App angemeldet und es erscheint ein kleines Menü rechts oben. Dort könnt ihr auch einen Freund registrieren.</p>
-            <p>Momentan ist die Seite noch in Entwicklung, es sind also noch nicht alle Funktionen fertig. Die Funktion "Termin erstellen" und "Kontostand ansehen" sind noch nicht verfügbar. Außerdem soll in Zukunft  die App automatisch Mails versenden und auf Termine hinweisen und auch per Mail Bescheid geben, ob es wirklich stattfindet oder nicht (kann man natürlich jederzeit hier sehen). 
-</p>
-            
-            <button class="kokihuna info-screen__btn">Hab verstanden</button>
-        </div>
-            
+            <div class="info-screen__content">
+                <h2>Ein paar kleine Hinweise</h2>
+                <p>Auf dieser Seite könnt ihr euch zum Kicken an- oder abmelden. Wenn ihr bereits registriert seid gebt ihr dazu euren Vornamen plus Nachnamen ein (z.B. Hermann Müller). Für alle die nicht registiert sind: Mail an</p>
+                <p><a href="mailto:kicken@wir-heute.de">kicken@wir-heute.de</a></p>
+                <p>Alternativ können alle bereits registrierten Spieler auch andere Spieler registrieren. Sobald ihr euch für einen Termin an- oder abmeldet seid ihr auch bei der App angemeldet und es erscheint ein kleines Menü rechts oben. Dort könnt ihr auch einen Freund registrieren.</p>
+                <p>Momentan ist die Seite noch in Entwicklung, es sind also noch nicht alle Funktionen fertig. Die Funktion "Termin erstellen" und "Kontostand ansehen" sind noch nicht verfügbar. Außerdem soll in Zukunft die App automatisch Mails versenden und auf Termine hinweisen und auch per Mail Bescheid geben, ob es wirklich stattfindet oder nicht (kann man natürlich jederzeit hier sehen).
+                </p>
+                <button class="kokihuna info-screen__btn">Hab verstanden</button>
+            </div>
         </div>
     </div>
-
     <!---USER-ACCOUNT-START-->
     <div class="user-account is-hidden">
         <span class="user-account__welcome">Hey {{username}}!</span>
@@ -49,27 +43,28 @@
         <p>Du hast einen Freund oder Kollegen, der auch gern öfters mitkicken würde? Dann kannst du hier Name und E-Mail-Adresse eingeben, damit er ab sofort gelistet ist und sich an- und abmelden kann, sowie die E-Mails dieser App erhält.</p>
         <form class="new-player-form">
             <span class="input input--user-account__menu">
-                <input type="text" name="new-player-firstname" id="new-player-firstname" class="input__field input__field--user-account__menu"/>
+                <input type="text" name="new-player-firstname" id="prename" class="input__field input__field--user-account__menu"/>
                 <label class="input__label input__label--user-account__menu" for="new-player-firstname">
                     
                     <span class="input__label-content input__label-content--user-account__menu">Vorname</span>
-                </label>
+            </label>
             </span>
             <span class="input input--user-account__menu">
-                <input type="text" name="new-player-lastname" id="new-player-lastname" class="input__field input__field--user-account__menu"/>
+                <input type="text" name="new-player-lastname" id="surname" class="input__field input__field--user-account__menu"/>
                 <label class="input__label input__label--user-account__menu" for="new-player-lastname">
                     
                     <span class="input__label-content input__label-content--user-account__menu">Nachname</span>
-                </label>
+            </label>
             </span>
             <span class="input input--user-account__menu">
-                <input type="text" name="new-player-email" id="new-player-email" class="input__field input__field--user-account__menu"/>
+                <input type="email" name="new-player-email" id="email" class="input__field input__field--user-account__menu"/>
                 <label class="input__label input__label--user-account__menu" for="new-player-email">
                     
                     <span class="input__label-content input__label-content--user-account__menu">E-Mail-Adresse</span>
-                </label>
+            </label>
             </span>
-            <button class="add-new-player-button kokihuna"><span class="add-new-player-button-text">Spieler registrieren!</span></button>
+            
+            <button class="add-new-player-button kokihuna" type="submit">Spieler registrieren!</button>
         </form>
     </div>
     <!---USER-ACCOUNT-END-->
@@ -114,7 +109,7 @@
             classie.toggleClass(document.querySelector(".user-account__overlay"), 'is-active');
         });
 
-        document.querySelector('.info-screen__btn').addEventListener('click', function(){
+        document.querySelector('.info-screen__btn').addEventListener('click', function() {
             classie.addClass(document.querySelector('.info-screen'), 'is-read');
         });
 

@@ -138,6 +138,9 @@
             line-height: 1.5em;
             margin-bottom: 1.5em;
         }
+        .add-new-player-button {
+            width: 100%;
+        }
     }
     
     .user-account__overlay {
@@ -148,7 +151,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgb(28,63,69);
+        background-color: rgb(28, 63, 69);
         transition: opacity 0.3s ease-in-out;
         opacity: 0;
         pointer-events: none;
@@ -161,11 +164,11 @@
         width: 100%;
         margin-bottom: 1.5em;
     }
-
+    
     .input__label-content--user-account__menu {
-        transform: translate3d(0.5em,0,0);
+        transform: translate3d(0.5em, 0, 0);
     }
-
-.add-new-player-button {
-    width: 100%;
-}
+    
+    .add-new-player-button {
+        width: 100%;
+    }

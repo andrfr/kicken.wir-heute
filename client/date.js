@@ -26,10 +26,32 @@ Template.date.helpers({
             _id: Session.get("currentUser")
         });
     },
-    subscribers: function() {
+    subscribers: function(subState) {
         //if(!this._id)
         //	return;
         //var subscriberIds = DatesUsers.find({date_id: this._id}).fetch();
+        var subscribers = DatesUsers.find({
+            date_id: this._id,
+            state: subState
+        }, {
+            fields: {
+                'user_id': 1
+            }
+        }).fetch();
+        var subscriberIds = [];
+        for (var i = 0; i <= subscribers.length; i++) {
+            if (subscribers[i])
+                subscriberIds.push(subscribers[i]['user_id']);
+        }
+        console.log(subscriberIds);
+        //return [];
+        return Users.find({
+            _id: {
+                $in: subscriberIds
+            }
+        });
+    },
+    unsubscribers: function() {
         var subscribers = DatesUsers.find({
             date_id: this._id,
             state: true

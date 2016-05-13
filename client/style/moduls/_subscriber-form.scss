@@ -168,10 +168,22 @@
     }
 }
 
+p.small-info {
+    margin-bottom: 0.5em;
+}
+
 .highlight-subscribed {
     color: $good-colour;
 }
 
 .highlight-unsubscribed {
     color: $bad-colour;
+    &:after {
+        content: ', '
+    }
+    &:last-child, &:first-child {
+        &:after {
+            content: '';
+        }
+    }
 }

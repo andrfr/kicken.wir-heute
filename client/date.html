@@ -33,22 +33,24 @@
                         <span class="input__label-content input__label-content--subscriber-form">Name oder E-Mail eingeben</span>
                 </label>
                 <a href="#" class="btn__add-user">
-                             <svg version="1.1" class="icon-add-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">  
+                    <svg version="1.1" class="icon-add-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
                         <polygon fill-rule="evenodd" clip-rule="evenodd" points="78.896,44.843 55.197,44.843 55.197,21.144 44.708,21.144 
-                    44.708,44.843 21.103,44.843 21.103,55.334 44.708,55.334 44.708,78.855 55.197,78.855 55.197,55.334 78.896,55.334"/>
+                    44.708,44.843 21.103,44.843 21.103,55.334 44.708,55.334 44.708,78.855 55.197,78.855 55.197,55.334 78.896,55.334" />
                     </svg>
-
-                        </a>
+                </a>
                 </span>
                 <button class="subscribe-button kokihuna"><span class="subscribe-button-text">Ich kicke mit!</span></button>
                 <button class="unsubscribe-button kokihuna"><span class="unsubscribe-button-text">Ohne mich!</span></button>
             </div>
         </form>
         <ul class="subscriber-list">
-            {{#each subscribers}}
+            {{#each subscribers true}}
             <li>{{prename}}</li>
             {{/each}}
         </ul>
-        <p><span class="highlight-subscribed">Diese {{numSubscribers true}} Spieler</span> haben schon zugesagt (<span class="highlight-unsubscribed">{{numSubscribers false}} Spieler </span>können leider nicht).</p>
+        <p class="small-info"><span class="highlight-subscribed">Diese {{numSubscribers true}} Spieler</span> haben schon zugesagt.</p>
+        <p class="small-info">(<span class="highlight-unsubscribed">{{numSubscribers false}} Spieler </span>können leider nicht: {{#each subscribers false}}
+            <span class="highlight-unsubscribed">{{prename}}</span>{{/each}}).
+        </p>
     </div>
 </template>

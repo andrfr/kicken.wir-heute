@@ -18,7 +18,7 @@
         color: $bad-colour;
     }
     @media (max-width: 768px) {
-        padding: 0.6em 1em;
+        padding: 0.6em 0;
         &.yes {
             font-size: 3.3em;
         }
@@ -27,6 +27,11 @@
         }
         &.maybe {
             font-size: 2.5em;
+        }
+    }
+    @media (max-width: 480px) {
+        &.yes, &.no, &.maybe {
+            font-size: 2em;
         }
     }
 }
@@ -86,7 +91,10 @@
     }
     @media (max-width: 768px) {
         width: 100%;
-        padding: 0 4em;
+        padding: 0 2em;
+    }
+    @media (max-width: 480px) {
+        padding: 0;
     }
 }
 

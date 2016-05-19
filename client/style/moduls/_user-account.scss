@@ -136,6 +136,9 @@
             font-size: 0.9em;
             line-height: 1.5em;
             margin-bottom: 1.5em;
+            @media (max-width: 480px) {
+                font-size: 1.1em;
+            }
         }
         .add-new-player-button {
             width: 100%;

@@ -1,74 +1,75 @@
 <template name="mainLayout">
-    <div class="info-screen">
-        <div class="center-hori">
-            <div class="info-screen__content">
-                <h2>Ein paar kleine Hinweise</h2>
-                <p>Auf dieser Seite könnt ihr euch zum Kicken an- oder abmelden. Wenn ihr bereits registriert seid gebt ihr dazu euren Vornamen plus Nachnamen ein (z.B. Hermann Müller). Für alle die nicht registiert sind: Mail an</p>
-                <p><a href="mailto:kicken@wir-heute.de">kicken@wir-heute.de</a></p>
-                <p>Alternativ können alle bereits registrierten Spieler auch andere Spieler registrieren. Sobald ihr euch für einen Termin an- oder abmeldet seid ihr auch bei der App angemeldet und es erscheint ein kleines Menü rechts oben. Dort könnt ihr auch einen Freund registrieren.</p>
-                <p>Momentan ist die Seite noch in Entwicklung, es sind also noch nicht alle Funktionen fertig. Die Funktion "Termin erstellen" und "Kontostand ansehen" sind noch nicht verfügbar. Außerdem soll in Zukunft die App automatisch Mails versenden und auf Termine hinweisen und auch per Mail Bescheid geben, ob es wirklich stattfindet oder nicht (kann man natürlich jederzeit hier sehen).
-                </p>
-                <button class="kokihuna info-screen__btn">Hab verstanden</button>
+    <div class="bg">
+        <div class="layer">
+            <div class="center-hori">
+                <div class="layer__content">
+                    <h2>Ein paar kleine Hinweise</h2>
+                    <p>Auf dieser Seite könnt ihr euch zum Kicken an- oder abmelden. Wenn ihr bereits registriert seid gebt ihr dazu euren Vornamen plus Nachnamen ein (z.B. Hermann Müller). Für alle die nicht registiert sind: Mail an</p>
+                    <p><a href="mailto:kicken@wir-heute.de">kicken@wir-heute.de</a></p>
+                    <p>Alternativ können alle bereits registrierten Spieler auch andere Spieler registrieren. Sobald ihr euch für einen Termin an- oder abmeldet seid ihr auch bei der App angemeldet und es erscheint ein kleines Menü rechts oben. Dort könnt ihr auch einen Freund registrieren.</p>
+                    <p>Momentan ist die Seite noch in Entwicklung, es sind also noch nicht alle Funktionen fertig. Die Funktion "Termin erstellen" und "Kontostand ansehen" sind noch nicht verfügbar. Außerdem soll in Zukunft die App automatisch Mails versenden und auf Termine hinweisen und auch per Mail Bescheid geben, ob es wirklich stattfindet oder nicht (kann man natürlich jederzeit hier sehen).
+                    </p>
+                    <button class="kokihuna layer__btn">Hab verstanden</button>
+                </div>
             </div>
         </div>
-    </div>
-    <!---USER-ACCOUNT-START-->
-    <div class="user-account is-hidden">
-        <span class="user-account__welcome">Hey {{username}}!</span>
-        <div class="user-account__option user-account__option--balance">
-            <i class="icon">
+        <!---USER-ACCOUNT-START-->
+        <div class="user-account is-hidden">
+            <span class="user-account__welcome">Hey {{username}}!</span>
+            <div class="user-account__option user-account__option--balance">
+                <i class="icon">
                     <svg version="1.1" class="svg-icon-euro-sign" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">  
                         <path d="M62.1 32.8c1.5 0.4 3.1 1 4.8 1.8l3.6-8.6c-4-2-8.4-3-13-3 -6 0-11 1.7-15 5.2 -4 3.5-6.4 8.2-7.4 14.1H30.2v6.5h4.3l-0.1 2c0 1 0 1.7 0.1 2.3H30.2v6.6H35.3c1 5.8 3.5 10.3 7.4 13.6 3.9 3.3 8.9 4.9 14.9 4.9 4.4 0 8-0.7 10.8-2.2v-9.5c-3.3 1.4-6.6 2.1-10.2 2.1 -6.6 0-10.6-3-11.9-9H58.8v-6.6H45.7l-0.1-1.2v-1.7l0.1-1.3h15.4v-6.5H46.3c0.6-3.3 1.8-5.8 3.8-7.6 1.9-1.7 4.4-2.6 7.4-2.6C59.1 32.2 60.6 32.4 62.1 32.8z"/> 
                     </svg>
                 </i>
-        </div>
-        <div class="user-account__option user-account__option--add-date">
-            <i class="icon">
+            </div>
+            <div class="user-account__option user-account__option--add-date">
+                <i class="icon">
                     <svg version="1.1" class="svg-icon-euro-sign" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">  
                         <polygon fill-rule="evenodd" clip-rule="evenodd" points="78.896,44.843 55.197,44.843 55.197,21.144 44.708,21.144 
                     44.708,44.843 21.103,44.843 21.103,55.334 44.708,55.334 44.708,78.855 55.197,78.855 55.197,55.334 78.896,55.334                 "/>
                     </svg>
                 </i>
-        </div>
-        <div class="user-account__option user-account__option--new-player">
-            <i class="icon">
+            </div>
+            <div class="user-account__option user-account__option--new-player">
+                <i class="icon">
                     <svg version="1.1" class="svg-icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
                                 <path d="M50 45.1c7.2 0 13-5.8 13-12.9 0-7.2-5.8-13-13-13 -7.2 0-12.9 5.8-12.9 13C37.1 39.3 42.8 45.1 50 45.1zM50 49c-10.1 0-18.3 8.2-18.3 18.3v13.5h36.7V67.3C68.3 57.2 60.1 49 50 49z"/>
                     </svg>
                 </i>
+            </div>
         </div>
-    </div>
-    <div class="user-account__overlay"></div>
-    <div class="user-account__menu user-account__menu--new-player">
-        <p>Du hast einen Freund oder Kollegen, der auch gern öfters mitkicken würde? Dann kannst du hier Name und E-Mail-Adresse eingeben, damit er ab sofort gelistet ist und sich an- und abmelden kann, sowie die E-Mails dieser App erhält.</p>
-        <form class="new-player-form">
-            <span class="input input--user-account__menu">
+        <div class="user-account__overlay"></div>
+        <div class="user-account__menu user-account__menu--new-player">
+            <p>Du hast einen Freund oder Kollegen, der auch gern öfters mitkicken würde? Dann kannst du hier Name und E-Mail-Adresse eingeben, damit er ab sofort gelistet ist und sich an- und abmelden kann, sowie die E-Mails dieser App erhält.</p>
+            <form class="new-player-form">
+                <span class="input input--user-account__menu">
                 <input type="text" name="new-player-firstname" id="prename" class="input__field input__field--user-account__menu"/>
                 <label class="input__label input__label--user-account__menu" for="new-player-firstname">
                     
                     <span class="input__label-content input__label-content--user-account__menu">Vorname</span>
-            </label>
-            </span>
-            <span class="input input--user-account__menu">
+                </label>
+                </span>
+                <span class="input input--user-account__menu">
                 <input type="text" name="new-player-lastname" id="surname" class="input__field input__field--user-account__menu"/>
                 <label class="input__label input__label--user-account__menu" for="new-player-lastname">
                     
                     <span class="input__label-content input__label-content--user-account__menu">Nachname</span>
-            </label>
-            </span>
-            <span class="input input--user-account__menu">
+                </label>
+                </span>
+                <span class="input input--user-account__menu">
                 <input type="email" name="new-player-email" id="email" class="input__field input__field--user-account__menu"/>
                 <label class="input__label input__label--user-account__menu" for="new-player-email">
                     
                     <span class="input__label-content input__label-content--user-account__menu">E-Mail-Adresse</span>
-            </label>
-            </span>
-            
-            <button class="add-new-player-button kokihuna" type="submit">Spieler registrieren!</button>
-        </form>
+                </label>
+                </span>
+                <button class="add-new-player-button kokihuna" type="submit">Spieler registrieren!</button>
+            </form>
+        </div>
+        <!---USER-ACCOUNT-END-->
+        {{> yield}}
     </div>
-    <!---USER-ACCOUNT-END-->
-    {{> yield}}
     <script>
     (function() {
         // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
@@ -109,8 +110,8 @@
             classie.toggleClass(document.querySelector(".user-account__overlay"), 'is-active');
         });
 
-        document.querySelector('.info-screen__btn').addEventListener('click', function() {
-            classie.addClass(document.querySelector('.info-screen'), 'is-read');
+        document.querySelector('.layer__btn').addEventListener('click', function() {
+            classie.addClass(document.querySelector('.layer'), 'is-hidden');
         });
 
     })();

@@ -1,5 +1,6 @@
 Meteor.subscribe("dates");
 Meteor.subscribe("users");
+Meteor.subscribe("dates_users");
 
 
 Template.admin.helpers({
@@ -19,7 +20,6 @@ Template.admin.helpers({
             return Users.find({ _id: { $in: subscriberIds } });
         }
     },
-    //subscribers: [{name: "Bob"}, {name: "Frank"}, {name: "Alice"}],
     dates: function() {
         return Dates.find({}, { sort: { date: 1 } });
     },

@@ -38,3 +38,7 @@ Router.route('/admin', {
 	template: 'admin'
 });
 Router.route('nope');
+Router.route('/adminDate', {
+	layoutTemplate: 'adminLayout',
+	template: 'adminDate'
+});

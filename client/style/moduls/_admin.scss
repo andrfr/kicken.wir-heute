@@ -82,31 +82,30 @@
                 vertical-align: middle;
             }
         }
+        &.payment {
+            img {
+                width: 1.9em;
+            }
+        }
     }
     .userlist {
         counter-reset: counter;
         font-family: 'Open Sans', sans-serif;
-
-
         li:before {
             content: counter(counter)". ";
             counter-increment: counter;
             margin-left: 1em;
             color: #444;
         }
-
         a {
             text-decoration: none;
             color: inherit;
         }
     }
-    
     .list__span--location {
         margin-left: 1em;
         font-family: 'Open Sans', sans-serif;
-
     }
-
     .form__edit-user--input {
         border: none;
         font-size: 1em;
@@ -115,20 +114,20 @@
         padding: 0;
         margin: 0;
         font-family: 'Open Sans', sans-serif;
-
-
         &:first-child {
             margin-left: 1em;
         }
-
         &:nth-child(3n) {
             width: 16em;
             color: $good-colour;
         }
-
         &:nth-child(4n) {
             width: 1.5em;
             color: $bad-colour;
         }
+    }
+
+    .layer {
+        
     }
 }

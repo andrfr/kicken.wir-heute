@@ -1,5 +1,14 @@
 <template name="admin">
     <div id="meta">
+        <div class="layer is-hidden">
+            <div class="center-hori">
+                <div class="layer__content">
+                    <ul>
+                    </ul>
+                    <button class="kokihuna layer__btn">Hab verstanden</button>
+                </div>
+            </div>
+        </div>
         <h1>Alle Termine</h1>
         <div class="content">
             <ul>
@@ -41,6 +50,9 @@
         <a class="link-to-date btn__admin-action" href='/date/{{_id}}'>
             <img src="link.svg" alt="Link">
         </a>
+        <button class="btn__admin-action payment">
+            <img src="eurosign.svg" alt="Einzahlung">
+        </button>
     </li>
 </template>
 <template name="userListElement">

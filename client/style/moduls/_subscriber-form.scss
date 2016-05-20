@@ -41,7 +41,7 @@
     margin: 0 auto;
     box-sizing: border-box;
     button {
-        width: 25%;
+        width: 24%;
         &.unsubscribe-button {
             &::before {
                 box-shadow: inset 0 0 0 2em $bad-colour;
@@ -54,6 +54,7 @@
             }
         }
         &.subscribe-button {
+            margin-right: 1%;
             &::before {
                 box-shadow: inset 0 0 0 2em $good-colour;
             }
@@ -73,7 +74,7 @@
             float: none;
         }
         &.undo {
-            width: 50%;
+            width: 49%;
             float: none;
             @media (max-width: 1060px) {
                 width: 100%;
@@ -83,7 +84,10 @@
             display: none;
         }
         @media (max-width: 1060px) {
-            width: 50%;
+            width: 49.5%;
+            &.subscribe-button {
+                //margin: 0;
+            }
         }
     }
     @media (max-width: 1444px) {
@@ -103,8 +107,10 @@
 
 .input--subscriber-form {
     width: 50%;
+    margin-right: 1%;
     @media (max-width: 1060px) {
-        width: 100%
+        width: 100%;
+        margin: 0 0 1% 0;
     }
 }
 

@@ -10,7 +10,7 @@ Meteor.methods({
             return false;
         }
         //} else {
-        //	DatesUsers.remove({date_id: dateId, user_id: userId});
+        //  DatesUsers.remove({date_id: dateId, user_id: userId});
         //}
 
     },
@@ -53,7 +53,22 @@ Meteor.methods({
     },
     editUserBalance: function(userId, inputText) {
         var user = Users.findOne({ _id: userId });
-        
+
         Users.update({ _id: userId }, { $set: { balance: inputText } });
+    },
+    sendEmail: function(to, from, subject, text) {
+        console.log('bin auch auf dem server');
+        check([to, from, subject, text], [String]);
+
+        // Let other method calls from the same client start running,
+        // without waiting for the email sending to complete.
+        this.unblock();
+
+        Email.send({
+            to: to,
+            from: from,
+            subject: subject,
+            text: text
+        });
     }
 });

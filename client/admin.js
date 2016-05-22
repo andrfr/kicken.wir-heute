@@ -2,7 +2,6 @@ Meteor.subscribe("dates");
 Meteor.subscribe("users");
 Meteor.subscribe("dates_users");
 
-
 Template.admin.helpers({
     currentDate: function() {
         return Dates.findOne({ _id: Session.get("currentDate") });
@@ -88,6 +87,14 @@ Template.admin.onRendered(function() {
 Template.userListElement.events({
     "click .deleteUser": function() {
         Meteor.call("deleteUser", this._id);
+    },
+    "click .sendEmail": function() {
+        Meteor.call("sendEmail",
+            'samuel.lutzweiler@posteo.de',
+            'kicken@wir-heute.de',
+            'Testmail',
+            'Mann das klappt ja gut!');
+        console.log('bin schon mal in der richtigen Funktion');
     },
     
     //Edit user

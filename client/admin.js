@@ -22,7 +22,7 @@ Template.admin.helpers({
         return Dates.find({}, { sort: { date: 1 } });
     },
     users: function() {
-        return Users.find({}, { sort: {surname: 1} });
+        return Users.find({}, { sort: {surname: 1, prename: 1} });
     },
     locations: function() {
         return Locations.find({});

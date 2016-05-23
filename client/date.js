@@ -3,8 +3,14 @@ Meteor.subscribe("users");
 Meteor.subscribe("dates_users");
 
 Session.set('loggedInUserDisplay', "");
-
 Session.set('loggedInUserFullname', "");
+
+var subSuccessTxt = function(name) {
+    return '<h2>Du bist dabei, ' + name + '!</h2><button class="kokihuna layer__btn">Das wird bestimmt spaßig!</button>' 
+}
+var subFailedTxt = function() {
+    return '<h2>Das hat was nicht funktioniert!</h2><p>Hast du vielleicht deinen Namen nicht richtig geschrieben? Bitte achte auch auf die Großbuchstaben am Anfang deines Namens!</p><button class="kokihuna layer__btn invert">Ok, ich probier es noch Mal</button>' 
+}
 
 Template.date.onRendered(function() {
     this.autorun(function() {
@@ -30,7 +36,7 @@ Template.date.helpers({
     },
     subscribers: function(subState) {
         //if(!this._id)
-        //	return;
+        //  return;
         //var subscriberIds = DatesUsers.find({date_id: this._id}).fetch();
         var subscribers = DatesUsers.find({
             date_id: this._id,
@@ -135,7 +141,11 @@ Template.date.helpers({
     },
     users: function() {
         return Users.find({});
+    },
+    tooltip: function() {
+        console.log('tooltip');
     }
+
 });
 
 Template.date.events({
@@ -157,14 +167,13 @@ Template.date.events({
         });
     },
     "click .subscribe-button": function(event, template) {
+
         event.preventDefault();
         var user = Session.get('loggedInUserFullname') || template.find('#subscriber-email').value;
         Meteor.call('setSubscription', this._id, user, true, function(error, result) {
             if (result) {
                 Session.set('loggedInUserDisplay', result.prename);
                 Session.set('loggedInUserFullname', result.fullname);
-
-                //console.log(Users.findOne({_id: Session.get("currentUser")}).email);
 
                 document.getElementById('subscriber-email').disabled = true;
                 document.getElementById('subscriber-email').value = result.prename + ' ist volle Kanne dabei!';
@@ -173,6 +182,14 @@ Template.date.events({
                 classie.add(document.querySelector(".subscribe-button"), 'is-hidden');
 
                 document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Ah, mist - Oma hat Geburstag!';
+                document.getElementsByClassName('layer__content')[0].innerHTML = subSuccessTxt(result.prename);
+                classie.toggleClass(document.querySelector(".layer"), 'is-active');
+                classie.toggleClass(document.querySelector(".overlay--blue"), 'is-active');
+            }
+            else {
+                document.getElementsByClassName('layer__content')[0].innerHTML = subFailedTxt();
+                classie.toggleClass(document.querySelector(".layer"), 'is-active');
+                classie.toggleClass(document.querySelector(".overlay--red"), 'is-active');
             }
         });
 

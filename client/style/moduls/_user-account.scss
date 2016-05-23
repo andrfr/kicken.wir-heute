@@ -145,7 +145,7 @@
         }
     }
     
-    .user-account__overlay {
+    .overlay--blue {
         content: '';
         position: absolute;
         z-index: 1;
@@ -159,6 +159,24 @@
         pointer-events: none;
         &.is-active {
             opacity: 0.65;
+            pointer-events: visible;
+        }
+    }
+    .overlay--red {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(74, 28, 14);
+        transition: opacity 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        &.is-active {
+            opacity: 0.65;
+            pointer-events: visible;
         }
     }
     

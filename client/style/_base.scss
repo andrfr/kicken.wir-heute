@@ -87,6 +87,18 @@
                     box-shadow: inset 0 0 0 0.25em $bad-colour;
                 }
             }
+
+            &.invert {
+                &::before {
+                    box-shadow: inset 0 0 0 2em $good-colour;
+                }
+                &:hover {
+                color: $good-colour;
+                &::before {
+                    box-shadow: inset 0 0 0 0.25em $good-colour;
+                }
+            }
+            }
         }
     }
     
@@ -99,7 +111,7 @@
         width: 100%;
         height: 100%;
         background: url(/bg-im-alten-lohbc.jpg);
-        background-position: center 15%;
+        background-position: center 8%;
         overflow-x: hidden;
     }
     
@@ -107,7 +119,6 @@
         width: 70%;
         margin: 10em auto 0;
         text-align: center;
-        height: 100%;
         @media (max-width: 1444px) {
             width: 77%
         }
@@ -128,7 +139,7 @@
         float: left;
         height: 4em;
     }
-
+    
     .input__field {
         position: relative;
         display: block;
@@ -203,21 +214,26 @@
     
     .layer {
         position: absolute;
-        background-color: rgba(36, 80, 87, 0.65);
         width: 100%;
         height: 100%;
         left: 0px;
         top: 0px;
         z-index: 50;
         display: table;
+        transform: translate3d(0, -1000px, 0);
         transition: transform 0.4s 0.2s ease-out, background-color 0.2s;
-        &.is-hidden {
-            transform: translate3d(0, -1000px, 0);
-            background-color: transparent;
+        pointer-events: none;
+        &.is-active {
+            transform: translate3d(0, 0, 0);
         }
     }
     
     .layer__content {
+
+        :last-child {
+            margin-bottom: 0;
+        }
+
         padding: 2em;
         background: #245057;
         vertical-align: middle;
@@ -239,6 +255,7 @@
             margin: 0 auto;
             padding: 0 2em;
             float: none;
+            pointer-events:visible;
         }
         @media (max-width: 1060px) {
             width: 90%;
@@ -252,11 +269,28 @@
     h2 {
         font-size: 2.5em;
         color: white;
-        margin-bottom: 1em;
         text-align: center;
+        margin-bottom: 1em;
     }
     
     .center-hori {
         display: table-cell;
         vertical-align: middle;
+    }
+    
+    .help {
+        width: 3em;
+        height: 3em;
+        background-color: $good-colour;
+        text-align: center;
+        transition: background-color 0.15s ease-in;
+        span {
+            line-height: 1.76471em;
+            color: white;
+            font-size: 1.7em;
+        }
+        &:hover {
+            background-color: $bad-colour;
+            cursor: pointer;
+        }
     }

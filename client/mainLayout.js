@@ -1,13 +1,26 @@
+Meteor.subscribe("dates");
+Meteor.subscribe("locations");
+
 Template.mainLayout.helpers({
-  username: function() {
-	return Session.get('loggedInUserDisplay');
-  }
+    currentLocationClass: function() {
+    	
+        var currentLocation = Dates.findOne({ date_id: this._id });
+
+        console.log(this._id);
+
+        if(this._id != undefined)
+        	console.log("undefinded");
+     
+
+    },
+    username: function() {
+        return Session.get('loggedInUserDisplay');
+    }
 });
 Template.mainLayout.events({
-	 "submit .new-player-form": function (event) {
-		 // Prevent default browser form submit
+    "submit .new-player-form": function(event) {
+        // Prevent default browser form submit
         event.preventDefault();
-    	console.log('hiih');
 
         // Get value from form element
         var prename_text = event.target.prename.value;

@@ -26,7 +26,8 @@ Meteor.methods({
             surname: surname,
             fullname: prename + " " + surname,
             email: email,
-            balance: balance
+            balance: balance,
+            receiveEmail: true
         });
     },
     deleteUser: function(userId) {
@@ -57,7 +58,6 @@ Meteor.methods({
         Users.update({ _id: userId }, { $set: { balance: inputText } });
     },
     sendEmail: function(to, from, subject, text) {
-        console.log('bin auch auf dem server');
         check([to, from, subject, text], [String]);
 
         // Let other method calls from the same client start running,
@@ -70,5 +70,9 @@ Meteor.methods({
             subject: subject,
             text: text
         });
+    },
+    editEmailSubscription: function(userId, checked) {
+        var user = Users.findOne({ _id: userId});
+        Users.update({ _id: userId }, { $set: { receiveEmail: checked } });
     }
 });

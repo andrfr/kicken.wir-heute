@@ -17,10 +17,12 @@ Template.date.onRendered(function() {
             classie.remove(document.querySelector(".user-account"), 'is-visible');
             classie.add(document.querySelector(".user-account"), 'is-hidden');
         }
+
     });
 });
 
 Template.date.helpers({
+
     currentUser: function() {
         return Users.findOne({
             _id: Session.get("currentUser")
@@ -43,8 +45,6 @@ Template.date.helpers({
             if (subscribers[i])
                 subscriberIds.push(subscribers[i]['user_id']);
         }
-        console.log(subscriberIds);
-        //return [];
         return Users.find({
             _id: {
                 $in: subscriberIds
@@ -95,7 +95,7 @@ Template.date.helpers({
             }
         }).count();
         if (subs < 6) {
-            if (new Date() > this.date - 3600000) {
+            if (new Date() > this.date - 12600000) {
                 return "no";
             } else {
                 return "maybe";
@@ -105,6 +105,7 @@ Template.date.helpers({
         }
     },
     datestate: function() {
+
         var subs = DatesUsers.find({
             date_id: this._id,
             state: true
@@ -114,7 +115,7 @@ Template.date.helpers({
             }
         }).count();
         if (subs < 6) {
-            if (new Date() > this.date - 3600000) {
+            if (new Date() > this.date - 12600000) {
                 return "Nein, leider nicht!";
             } else {
                 return "Hm, noch sind wir zu wenig... meld dich doch an!";

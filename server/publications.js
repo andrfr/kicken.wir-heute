@@ -8,3 +8,6 @@ Meteor.publish("dates_users", function () {
 Meteor.publish("users", function () {
     return Users.find({});
 });
+Meteor.publish("locations", function() {
+	return Locations.find({});
+});

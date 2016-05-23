@@ -1,6 +1,7 @@
 Meteor.subscribe("dates");
 Meteor.subscribe("users");
 Meteor.subscribe("dates_users");
+Meteor.subscribe("locations");
 
 Template.admin.helpers({
     currentDate: function() {
@@ -9,8 +10,6 @@ Template.admin.helpers({
     currentUser: function() {
         return Users.findOne({ _id: Session.get("currentUser") });
     },
-    datestate: "Nein, leider nicht!",
-    isSubscripted: false,
     subscribers: function() {
         // console.log(currentDate.subscribers);
         // return currentDate.subscribers;
@@ -23,7 +22,10 @@ Template.admin.helpers({
         return Dates.find({}, { sort: { date: 1 } });
     },
     users: function() {
-        return Users.find({});
+        return Users.find({}, { sort: {surname: 1} });
+    },
+    locations: function() {
+        return Locations.find({});
     }
 
 });
@@ -88,15 +90,24 @@ Template.userListElement.events({
     "click .deleteUser": function() {
         Meteor.call("deleteUser", this._id);
     },
+    "click .receive-email": function(event) {
+        Meteor.call("editEmailSubscription", this._id, event.target.checked)
+    },
     "click .sendEmail": function() {
+        var users = "";
+
+        Users.find({ receiveEmail: true }).forEach( function(user){
+            if(user.email != "")
+                users = users + user.email + ", ";
+        });
+
         Meteor.call("sendEmail",
-            'samuel.lutzweiler@posteo.de',
+            users,
             'kicken@wir-heute.de',
             'Testmail',
             'Mann das klappt ja gut!');
-        console.log('bin schon mal in der richtigen Funktion');
     },
-    
+
     //Edit user
     "click .userlist__edit-user": function(event) {
 
@@ -107,19 +118,19 @@ Template.userListElement.events({
     },
 
     "focusout .edit-prename": function(event) {
-    	Meteor.call("editUserPrename", this._id, event.target.value)
+        Meteor.call("editUserPrename", this._id, event.target.value)
     },
 
     "focusout .edit-surname": function(event) {
-    	Meteor.call("editUserSurname", this._id, event.target.value)
+        Meteor.call("editUserSurname", this._id, event.target.value)
     },
 
     "focusout .edit-email": function(event) {
-    	Meteor.call("editUserEmail", this._id, event.target.value)
+        Meteor.call("editUserEmail", this._id, event.target.value)
     },
 
-     "focusout .edit-balance": function(event) {
-    	Meteor.call("editUserBalance", this._id, event.target.value)
+    "focusout .edit-balance": function(event) {
+        Meteor.call("editUserBalance", this._id, event.target.value)
     }
 
 });

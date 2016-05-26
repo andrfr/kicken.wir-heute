@@ -1,5 +1,7 @@
 Meteor.methods({
     setSubscription: function(dateId, inputText, subState) {
+        
+        
         var user = Users.findOne({ $or: [{ fullname: inputText }, { email: inputText }] });
 
         if (user) {

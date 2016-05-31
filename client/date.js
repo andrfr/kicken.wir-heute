@@ -16,12 +16,12 @@ Template.date.onRendered(function() {
     this.autorun(function() {
         if (Session.get('loggedInUserFullname') != "") {
             // User is logged in
-            classie.remove(document.querySelector(".user-account"), 'is-hidden');
+            /*classie.remove(document.querySelector(".user-account"), 'is-hidden');
             classie.add(document.querySelector(".user-account"), 'is-visible');
         } else {
             // User is logged out
             classie.remove(document.querySelector(".user-account"), 'is-visible');
-            classie.add(document.querySelector(".user-account"), 'is-hidden');
+            classie.add(document.querySelector(".user-account"), 'is-hidden');*/
         }
 
     });
@@ -141,6 +141,12 @@ Template.date.helpers({
     },
     users: function() {
         return Users.find({});
+    },
+    layerText: function() {
+        if (inputError) {
+            console.log('hhihi');
+            return "Ja man, geht doch!"
+        }
     }
 });
 
@@ -162,9 +168,13 @@ Template.date.events({
                     classie.remove(document.querySelector(".subscribe-button"), 'is-hidden');
 
                     document.getElementsByClassName('subscribe-button-text')[0].innerHTML = 'War nur Spaß - bin dabei!';
-                }
+                    Session.set('infoBoxUnsubSuccess', true);
+
+                } else
+                    Session.set('infoBoxSubError', true);
             });
-        }
+        } else
+            Session.set('infoBoxSubError', true);
 
     },
     "click .subscribe-button": function(event, template) {
@@ -186,26 +196,12 @@ Template.date.events({
                     classie.add(document.querySelector(".subscribe-button"), 'is-hidden');
 
                     document.getElementsByClassName('unsubscribe-button-text')[0].innerHTML = 'Ah, mist - Oma hat Geburstag!';
-
-                    /* Hinweis bei erfolgreicher Anmeldung
-                    document.getElementsByClassName('layer__content')[0].innerHTML = subSuccessTxt(result.prename);
-                    classie.toggleClass(document.querySelector(".layer"), 'is-active');
-                    classie.toggleClass(document.querySelector(".overlay--blue"), 'is-active');
-                    */
-                }
-                /*Hinweis bei nichterfolgreicher anmeldung
-                else {
-                    document.getElementsByClassName('layer__content')[0].innerHTML = subFailedTxt();
-                    classie.toggleClass(document.querySelector(".layer"), 'is-active');
-                    classie.toggleClass(document.querySelector(".overlay--red"), 'is-active');
-                }
-                */
+                    Session.set('infoBoxSubSuccess', true);
+                } else
+                    Session.set('infoBoxSubError', true);
             });
-        }
-        /*else {
-            classie.add(document.querySelector(".input--subscriber-form"), 'false');
-        }*/
-
+        } else
+            Session.set('infoBoxSubError', true);
     },
     "click .user-account__option--new-player": function(event, template) {
         classie.add(document.querySelector(".user-account__menu--new-player"), 'is-visible');
@@ -226,3 +222,13 @@ Template.date.events({
         document.getElementById("subscriber-email").focus();
     }
 });
+
+
+var inputError = function(state) {
+    if (state) {
+        classie.toggleClass(document.querySelector(".layer"), 'is-active');
+        classie.toggleClass(document.querySelector(".info-box--overlay"), 'is-active');
+        //classie.add(document.querySelector(".input--subscriber-form"), 'false');
+        return true;
+    }
+};

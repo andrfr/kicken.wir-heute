@@ -1,6 +1,17 @@
 Meteor.subscribe("dates");
 Meteor.subscribe("locations");
 
+Template.mainLayout.onCreated(function() {
+    Session.setDefault({
+        infoBoxHelp: false,
+        infoBoxSubSuccess: false,
+        infoBoxSubError: false,
+        infoBoxUnsubSuccess: false,
+        infoBoxColorClass: 'good-colour'
+    });
+});
+
+//Session.set('infoBoxState', true);
 
 Template.mainLayout.helpers({
     currentLocationClass: function() {
@@ -17,6 +28,24 @@ Template.mainLayout.helpers({
     },
     username: function() {
         return Session.get('loggedInUserDisplay');
+    },
+    infoBoxHelp() {
+        Session.set('infoBoxColorClass', 'good-colour');
+
+        return Session.get('infoBoxHelp');
+    },
+    infoBoxSubSuccess() {
+        Session.set('infoBoxColorClass', 'good-colour');
+
+        return Session.get('infoBoxSubSuccess');
+    },
+    infoBoxSubError() {
+        Session.set('infoBoxColorClass', 'bad-colour');
+        return Session.get('infoBoxSubError');
+    },
+    infoBoxUnsubSuccess() {
+        Session.set('infoBoxColorClass', 'bad-colour');
+        return Session.get('infoBoxUnsubSuccess');
     }
 });
 Template.mainLayout.events({
@@ -40,15 +69,37 @@ Template.mainLayout.events({
     },
 
     "click .help": function(event) {
-        classie.toggleClass(document.querySelector(".layer"), 'is-active');
-        classie.toggleClass(document.querySelector(".overlay--blue"), 'is-active');
-
+        Session.set('infoBoxHelp', true);
     },
 
-    "click .overlay--blue": function () {
-    	classie.removeClass(document.querySelector(".layer"), 'is-active');
-        classie.removeClass(document.querySelector(".user-account__menu--new-player"), 'is-visible');
-        classie.removeClass(document.querySelector(".user-account__option--new-player"), 'is-active');
-        classie.removeClass(document.querySelector(".overlay--blue"), 'is-active');
+    "click .info-box__overlay": function(event) {
+        closeInfoBox(event, 600);
+    },
+    "click .info-box__btn": function(event) {
+        closeInfoBox(event, 600);
     }
 });
+
+var closeInfoBox = function(event, timeout) {
+    classie.addClass(document.querySelector(".info-box"), 'is-removed');
+    classie.addClass(document.querySelector('.info-box__overlay'), 'is-removed');
+
+    if (timeout) {
+        setTimeout(function() {
+            Session.set({
+                infoBoxHelp: false,
+                infoBoxSubSuccess: false,
+                infoBoxSubError: false,
+                infoBoxUnsubSuccess: false,
+            })
+        }, timeout);
+    } else {
+        Session.set({
+            infoBoxHelp: false,
+            infoBoxSubSuccess: false,
+            infoBoxSubError: false,
+            infoBoxUnsubSuccess: false,
+        })
+    }
+
+};

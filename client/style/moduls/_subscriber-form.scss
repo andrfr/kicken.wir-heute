@@ -109,10 +109,6 @@
     width: 50%;
     margin-right: 1%;
 
-    &.false {
-        animation: color_change 0.5s 1 alternate;
-    }
-
     @media (max-width: 1060px) {
         width: 100%;
         margin: 0 0 1% 0;
@@ -205,9 +201,4 @@ p.small-info {
             content: '';
         }
     }
-}
-
-@keyframes color_change {
-    from { background-color: white; }
-    to { background-color: red; }
 }

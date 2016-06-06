@@ -72,18 +72,18 @@ Template.mainLayout.events({
         Session.set('infoBoxHelp', true);
     },
 
-    "click .info-box__overlay": function(event) {
-        closeInfoBox(event, 600);
+    "click .info-box": function(event) {
+        closeInfoBox(event, 700);
     },
     "click .info-box__btn": function(event) {
-        closeInfoBox(event, 600);
-    }
+        closeInfoBox(event, 700);
+    }, 
 });
 
 var closeInfoBox = function(event, timeout) {
-    classie.addClass(document.querySelector(".info-box"), 'is-removed');
-    classie.addClass(document.querySelector('.info-box__overlay'), 'is-removed');
-
+	classie.addClass(document.querySelector('.info-box__content'), 'bounceOutUp');
+	classie.addClass(document.querySelector('.info-box'), 'fadeOut');
+    
     if (timeout) {
         setTimeout(function() {
             Session.set({

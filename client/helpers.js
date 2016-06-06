@@ -5,3 +5,10 @@ Template.registerHelper('formatDate', function(date) {
 Template.registerHelper('infoBoxColorClass', function() {
 	return Session.get('infoBoxColorClass');
 });
+
+Template.registerHelper('animationState', function(state) {
+	if (state){
+		return 'is-removed';
+	}
+});
+

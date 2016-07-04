@@ -5,16 +5,10 @@ Meteor.subscribe("dates_users");
 Session.set('loggedInUserDisplay', "");
 Session.set('loggedInUserFullname', "");
 
-var subSuccessTxt = function(name) {
-    return '<h2>Du bist dabei, ' + name + '!</h2><button class="kokihuna layer__btn">Das wird bestimmt spaßig!</button>'
-}
-var subFailedTxt = function() {
-    return '<h2>Das hat was nicht funktioniert!</h2><p>Hast du vielleicht deinen Namen nicht richtig geschrieben? Bitte achte auch auf die Großbuchstaben am Anfang deines Namens!</p><button class="kokihuna layer__btn invert">Ok, ich probier es noch Mal</button>'
-}
-
 Template.date.onRendered(function() {
     this.autorun(function() {
-        if (Session.get('loggedInUserFullname') != "") {
+        if (Session.get('loggedInUserFullname')) {
+            console.log('eingeloggt');
             // User is logged in
             /*classie.remove(document.querySelector(".user-account"), 'is-hidden');
             classie.add(document.querySelector(".user-account"), 'is-visible');
@@ -51,28 +45,6 @@ Template.date.helpers({
             if (subscribers[i])
                 subscriberIds.push(subscribers[i]['user_id']);
         }
-        return Users.find({
-            _id: {
-                $in: subscriberIds
-            }
-        });
-    },
-    unsubscribers: function() {
-        var subscribers = DatesUsers.find({
-            date_id: this._id,
-            state: true
-        }, {
-            fields: {
-                'user_id': 1
-            }
-        }).fetch();
-        var subscriberIds = [];
-        for (var i = 0; i <= subscribers.length; i++) {
-            if (subscribers[i])
-                subscriberIds.push(subscribers[i]['user_id']);
-        }
-        console.log(subscriberIds);
-        //return [];
         return Users.find({
             _id: {
                 $in: subscriberIds
@@ -130,8 +102,6 @@ Template.date.helpers({
             return "Ja, voll geil man!";
         }
     },
-    isSubscripted: false,
-
     dates: function() {
         return Dates.find({}, {
             sort: {
@@ -139,16 +109,10 @@ Template.date.helpers({
             }
         });
     },
-    users: function() {
-        return Users.find({});
+    subButtons: function() {
+        return '<button class="subscribe-button kokihuna"><span class="subscribe-button-text">Ich kicke mit!</span></button>                <button class="unsubscribe-button kokihuna"><span class="unsubscribe-button-text">Ohne mich!</span></button>'
     },
-    layerText: function() {
-        if (inputError) {
-            console.log('hhihi');
-            return "Ja man, geht doch!"
-        }
-    }
-});
+ });
 
 Template.date.events({
     "click .unsubscribe-button": function(event, template) {
@@ -223,12 +187,9 @@ Template.date.events({
     }
 });
 
-
-var inputError = function(state) {
-    if (state) {
-        classie.toggleClass(document.querySelector(".layer"), 'is-active');
-        classie.toggleClass(document.querySelector(".info-box--overlay"), 'is-active');
-        //classie.add(document.querySelector(".input--subscriber-form"), 'false');
-        return true;
+var findSubscribers = function(subState) {
+    if(subState == "") {
+        subState = true;
     }
-};
+    
+}

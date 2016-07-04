@@ -19,10 +19,8 @@ Router.route('/', function() {
 	}
 
 	if (!currentDate) {
-	  console.log('nope');
 		this.redirect('/nope');
 	} else {
-	  console.log('date');
 		this.redirect('/date/' + currentDate._id);
 	}
 });

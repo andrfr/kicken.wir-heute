@@ -87,6 +87,17 @@
                     box-shadow: inset 0 0 0 0.25em $bad-colour;
                 }
             }
+            &.invert {
+                &::before {
+                    box-shadow: inset 0 0 0 2em $good-colour;
+                }
+                &:hover {
+                    color: $good-colour;
+                    &::before {
+                        box-shadow: inset 0 0 0 0.25em $good-colour;
+                    }
+                }
+            }
         }
     }
     
@@ -96,31 +107,42 @@
     
     .bg {
         position: absolute;
-        overflow: hidden;
         width: 100%;
         height: 100%;
         background: url(/bg-im-alten-lohbc.jpg);
-        background-position: center 15%;
+        background-position: center 8%;
         overflow-x: hidden;
     }
-    
-    .container {
-        width: 70%;
-        margin: 10em auto 0;
-        text-align: center;
+    .center-wrapper {
+        display: table;
+        position: absolute;
         height: 100%;
+        top: 0em; // workaround wegen helpbox
+        pointer-events: none; // """
+
+    }
+    .container {
+        display: table-cell;
+        position: relative;
+        vertical-align: middle;
+        //width: 70%;
+        padding: 0 3em;
+        text-align: center;
+        pointer-events: none;
         @media (max-width: 1444px) {
-            width: 77%
+        //    width: 77%
         }
         @media (max-width: 768px) {
-            width: 92%;
-            margin: 7em auto 0;
+         //   width: 92%;
+         padding: 0 1em;
         }
         @media (max-width: 480px) {
-            margin: 5em auto 0;
         }
     }
     
+    .subscriber-form {
+        pointer-events: visible;
+    }
     //--------------inputs-------------------------------------
     .input {
         z-index: 1;
@@ -202,62 +224,3 @@
         }
     }
     
-    .layer {
-        position: absolute;
-        background-color: rgba(36, 80, 87, 0.65);
-        width: 100%;
-        height: 100%;
-        left: 0px;
-        top: 0px;
-        z-index: 50;
-        display: table;
-        transition: transform 0.4s 0.2s ease-out, background-color 0.2s;
-        &.is-hidden {
-            transform: translate3d(0, -1000px, 0);
-            background-color: transparent;
-        }
-    }
-    
-    .layer__content {
-        padding: 2em;
-        background: #245057;
-        vertical-align: middle;
-        width: 50%;
-        margin-left: auto;
-        margin-right: auto;
-        p {
-            font-family: 'Open Sans', sans-serif;
-            color: white;
-            margin-bottom: 1.5em;
-            line-height: 1.35em;
-            a {
-                text-decoration: none;
-                color: #57A8B5;
-            }
-        }
-        .layer__btn {
-            display: block;
-            margin: 0 auto;
-            padding: 0 2em;
-            float: none;
-        }
-        @media (max-width: 1060px) {
-            width: 90%;
-        }
-        @media (max-width: 768px) {
-            width: 100%;
-            height: 100%;
-        }
-    }
-    
-    h2 {
-        font-size: 2.5em;
-        color: white;
-        margin-bottom: 1em;
-        text-align: center;
-    }
-    
-    .center-hori {
-        display: table-cell;
-        vertical-align: middle;
-    }

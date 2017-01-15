@@ -1,0 +1,112 @@
+.info-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: 50;
+    display: table;
+    &.good-colour {
+        background-color: rgba(28, 63, 69, 0.65);
+        .info-box__content {
+            background: $good-colour;
+        }
+    }
+    &.bad-colour {
+        background-color: rgba(74, 29, 16, 0.65);
+        .info-box__content {
+            background: $bad-colour;
+            button {
+                &.kokihuna {
+                    color: white;
+                    &::before {
+                        box-shadow: inset 0 0 0 2em $good-colour;
+                    }
+                    &:hover {
+                        color: $good-colour;
+                        &::before {
+                            box-shadow: inset 0 0 0 0.25em $good-colour;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.info-box__content {
+    :last-child {
+        margin-bottom: 0;
+    }
+    
+    pointer-events: visible;
+    padding: 2em;
+    vertical-align: middle;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 2;
+    
+    p {
+        font-family: 'Open Sans', sans-serif;
+        color: white;
+        margin-bottom: 1.5em;
+        line-height: 1.35em;
+        a {
+            text-decoration: none;
+            color: #57A8B5;
+        }
+    }
+    .info-box__btn {
+        display: block;
+        margin: 0 auto;
+        padding: 0 2em;
+        float: none;
+    }
+    @media (max-width: 1060px) {
+        width: 90%;
+    }
+    @media (max-width: 768px) {
+        width: 100%;
+        //height: 100%;
+    }
+}
+
+h2 {
+    font-size: 2.5em;
+    color: white;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: white;
+    text-align: center;
+    margin-bottom: 0.5em;
+}
+
+.info-box__hz-wrapper {
+    //align info-box horizontal
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.help {
+    width: 3em;
+    height: 3em;
+    background-color: $good-colour;
+    text-align: center;
+    transition: background-color 0.15s ease-in;
+    span {
+        line-height: 1.76471em;
+        color: white;
+        font-size: 1.7em;
+    }
+    &:hover {
+        background-color: $bad-colour;
+        cursor: pointer;
+    }
+}

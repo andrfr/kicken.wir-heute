@@ -1,14 +1,5 @@
 <template name="admin">
     <div id="meta">
-        <div class="layer is-hidden">
-            <div class="center-hori">
-                <div class="layer__content">
-                    <ul>
-                    </ul>
-                    <button class="kokihuna layer__btn">Hab verstanden</button>
-                </div>
-            </div>
-        </div>
         <h1>Alle Termine</h1>
         <div class="content">
             <ul>
@@ -18,7 +9,10 @@
         <h1>Termin erstellen</h1>
         <div class="content">
             <form class="createDate">
-                <input class="input__field--admin" type="text" name="location" placeholder="Ort" />
+                <!--<select name="location">
+                    {{#each locations}} {{> locationListElement}} {{/each}}
+                </select>-->
+                <input class="input__field--admin" type="text" name="location" placeholder="Ort">
                 <input class="input__field--admin datepicker" type="text" name="date" placeholder="Datum" />
                 <input class="input__field--admin timepicker" type="text" name="time" placeholder="Uhrzeit" />
                 <input class="input__field--admin input__field--admin-submit" type="submit" value="Termin Erstellen" />
@@ -61,7 +55,11 @@
         <input type="text" name="surname" value="{{surname}}" class="input__field--admin form__edit-user--input edit-surname" />
         <input type="email" name="email" value="{{email}}" class="input__field--admin form__edit-user--input edit-email" />
         <input type="text" name="balance" value="{{balance}}" class="input__field--admin form__edit-user--input edit-balance" /><span>&euro;</span>
+        <span>E-Mail</span><input type="checkbox" name="receiveEmail" class="receive-email" value="checked" checked="{{#if receiveEmail}}checked{{else}}{{/if}}"/>
         <button class="deleteUser btn__admin-action delete"><img src="delete.svg" alt="Löschen"></button>
         <button class="sendEmail btn__admin-action send-mail"><img src="eurosign.svg" alt="Löschen"></button>
     </li>
+</template>
+<template name="locationListElement">
+    <option value="{{locationName}}">{{locationName}}</option>
 </template>

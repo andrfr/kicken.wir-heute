@@ -1,13 +1,57 @@
+Meteor.subscribe("dates");
+Meteor.subscribe("locations");
+
+Template.mainLayout.onCreated(function() {
+    Session.setDefault({
+        infoBoxHelp: false,
+        infoBoxSubSuccess: false,
+        infoBoxSubError: false,
+        infoBoxUnsubSuccess: false,
+        infoBoxColorClass: 'good-colour'
+    });
+});
+
+//Session.set('infoBoxState', true);
+
 Template.mainLayout.helpers({
-  username: function() {
-	return Session.get('loggedInUserDisplay');
-  }
+    currentLocationClass: function() {
+
+        var currentLocation;
+
+
+        if (this._id != undefined) {
+            currentLocation = Dates.find({ date_id: this._id });
+            console.log(this._id);
+
+            console.log(currentLocation);
+        }
+    },
+    username: function() {
+        return Session.get('loggedInUserDisplay');
+    },
+    infoBoxHelp() {
+        Session.set('infoBoxColorClass', 'good-colour');
+
+        return Session.get('infoBoxHelp');
+    },
+    infoBoxSubSuccess() {
+        Session.set('infoBoxColorClass', 'good-colour');
+
+        return Session.get('infoBoxSubSuccess');
+    },
+    infoBoxSubError() {
+        Session.set('infoBoxColorClass', 'bad-colour');
+        return Session.get('infoBoxSubError');
+    },
+    infoBoxUnsubSuccess() {
+        Session.set('infoBoxColorClass', 'bad-colour');
+        return Session.get('infoBoxUnsubSuccess');
+    }
 });
 Template.mainLayout.events({
-	 "submit .new-player-form": function (event) {
-		 // Prevent default browser form submit
+    "submit .new-player-form": function(event) {
+        // Prevent default browser form submit
         event.preventDefault();
-    	console.log('hiih');
 
         // Get value from form element
         var prename_text = event.target.prename.value;
@@ -22,5 +66,40 @@ Template.mainLayout.events({
         event.target.email.value = "";
         event.target.prename.value = "";
         event.target.surname.value = "";
-    }
+    },
+
+    "click .help": function(event) {
+        Session.set('infoBoxHelp', true);
+    },
+
+    "click .info-box": function(event) {
+        closeInfoBox(event, 700);
+    },
+    "click .info-box__btn": function(event) {
+        closeInfoBox(event, 700);
+    }, 
 });
+
+var closeInfoBox = function(event, timeout) {
+	classie.addClass(document.querySelector('.info-box__content'), 'bounceOutUp');
+	classie.addClass(document.querySelector('.info-box'), 'fadeOut');
+    
+    if (timeout) {
+        setTimeout(function() {
+            Session.set({
+                infoBoxHelp: false,
+                infoBoxSubSuccess: false,
+                infoBoxSubError: false,
+                infoBoxUnsubSuccess: false,
+            })
+        }, timeout);
+    } else {
+        Session.set({
+            infoBoxHelp: false,
+            infoBoxSubSuccess: false,
+            infoBoxSubError: false,
+            infoBoxUnsubSuccess: false,
+        })
+    }
+
+};

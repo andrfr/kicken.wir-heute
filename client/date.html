@@ -15,12 +15,13 @@
     </i>
     </div>-->
     <!---DATE-NAVIGATION-END-->
-    <div class="container">
-        <h1>Kicken wir <span>{{formatDate date}} Uhr {{location}}</span>?</h1>
-        <p class="date-state {{datestateClass}}">{{datestate}}</p>
-        <form class="subscriber-form">
-            <div class="subscriber-form__input-wrapper">
-                <span class="input input--subscriber-form">
+    <div class="center-wrapper">
+        <div class="container">
+            <h1>Kicken wir <span>{{formatDate date}} Uhr {{location}}</span>?</h1>
+            <p class="date-state {{datestateClass}}">{{datestate}}</p>
+            <form class="subscriber-form">
+                <div class="subscriber-form__input-wrapper">
+                    <span class="input input--subscriber-form">
                     <input type="text" name="subscriber-email" id="subscriber-email" class="input__field input__field--subscriber-form"/>
                     <label class="input__label input__label--subscriber-form" for="subscriber-email">
                         <a href="#" class="icon icon__subscriber-email">
@@ -31,26 +32,27 @@
                         </a>
          
                         <span class="input__label-content input__label-content--subscriber-form">Name oder E-Mail eingeben</span>
-                </label>
-                <a href="#" class="btn__add-user">
-                    <svg version="1.1" class="icon-add-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
-                        <polygon fill-rule="evenodd" clip-rule="evenodd" points="78.896,44.843 55.197,44.843 55.197,21.144 44.708,21.144 
+                    </label>
+                    <a href="#" class="btn__add-user">
+                        <svg version="1.1" class="icon-add-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" xml:space="preserve">
+                            <polygon fill-rule="evenodd" clip-rule="evenodd" points="78.896,44.843 55.197,44.843 55.197,21.144 44.708,21.144 
                     44.708,44.843 21.103,44.843 21.103,55.334 44.708,55.334 44.708,78.855 55.197,78.855 55.197,55.334 78.896,55.334" />
-                    </svg>
-                </a>
-                </span>
-                <button class="subscribe-button kokihuna"><span class="subscribe-button-text">Ich kicke mit!</span></button>
-                <button class="unsubscribe-button kokihuna"><span class="unsubscribe-button-text">Ohne mich!</span></button>
-            </div>
-        </form>
-        <ul class="subscriber-list">
-            {{#each subscribers true}}
-            <li>{{prename}}</li>
-            {{/each}}
-        </ul>
-        <p class="small-info"><span class="highlight-subscribed">Diese {{numSubscribers true}} Spieler</span> haben schon zugesagt.</p>
-        <p class="small-info">(<span class="highlight-unsubscribed">{{numSubscribers false}} Spieler </span>können leider nicht: {{#each subscribers false}}
-            <span class="highlight-unsubscribed">{{prename}}</span>{{/each}}).
-        </p>
+                        </svg>
+                    </a>
+                    </span>
+                    {{{subButtons}}}
+                </div>
+            </form>
+            <ul class="subscriber-list">
+                {{#each subscribers true}}
+                <li>{{prename}}</li>
+                {{/each}}
+            </ul>
+            <p class="small-info"><span class="highlight-subscribed">Diese {{numSubscribers true}} Spieler</span> haben schon zugesagt.</p>
+            <p class="small-info">(<span class="highlight-unsubscribed">{{numSubscribers false}} Spieler </span>können leider nicht: {{#each subscribers false}}
+                <span class="highlight-unsubscribed">{{prename}}</span>{{/each}}).
+            </p>
+        </div>
     </div>
 </template>
+<template name="infoLayer">{{layerText}}</template>
